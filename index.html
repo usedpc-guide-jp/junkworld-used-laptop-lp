@@ -13,7 +13,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>3万円前後の中古ノートPCを、安く失敗しにくく選ぶ | JUNKWORLD</title>
-  <meta name="description" content="3万円前後の中古ノートPCを探す人向けに、JUNKWORLDの価格帯、30日間保証、一部商品を除く、在庫の豊富さ、選びやすさを整理した広告LPです。">
+  <meta name="description" content="3万円前後の中古ノートPCを探す人向けに、JUNKWORLDの価格帯別在庫、30日間保証、主要ショップとの違い、購入前チェックポイントを整理した広告LPです。">
   <!-- Before publishing, replace CONFIG.AFF_LINK / CONFIG.OPERATOR_LINK / CONFIG.PRIVACY_LINK near the end of this file. -->
   <style>
     :root {
@@ -21,7 +21,7 @@
       --paper: #fffdf8;
       --surface: #fff8ee;
       --ink: #1f2933;
-      --muted: #5f6b76;
+      --muted: #4a5568;
       --line: #e7d7bf;
       --accent: #c85a2e;
       --accent-dark: #a6451f;
@@ -44,6 +44,38 @@
         linear-gradient(180deg, #f8f2e9 0%, #f3eee6 100%);
       color: var(--ink);
       line-height: 1.7;
+    }
+
+    main {
+      position: relative;
+      overflow: hidden;
+    }
+
+    main::before,
+    main::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+      border-radius: 999px;
+      pointer-events: none;
+      filter: blur(10px);
+      opacity: 0.55;
+    }
+
+    main::before {
+      width: 260px;
+      height: 260px;
+      top: 84px;
+      right: -120px;
+      background: radial-gradient(circle, rgba(251, 224, 211, 0.8) 0%, rgba(251, 224, 211, 0) 70%);
+    }
+
+    main::after {
+      width: 320px;
+      height: 320px;
+      bottom: 120px;
+      left: -140px;
+      background: radial-gradient(circle, rgba(255, 247, 236, 0.95) 0%, rgba(255, 247, 236, 0) 72%);
     }
 
     a {
@@ -107,6 +139,7 @@
     }
 
     .hero-panel {
+      position: relative;
       display: grid;
       grid-template-columns: 1.3fr 0.9fr;
       gap: 24px;
@@ -115,6 +148,19 @@
       border: 1px solid rgba(231, 215, 191, 0.95);
       border-radius: 28px;
       box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -40px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(251, 224, 211, 0.42) 0%, rgba(251, 224, 211, 0) 72%);
+      pointer-events: none;
     }
 
     h1, h2, h3 {
@@ -132,6 +178,24 @@
       margin: 18px 0 0;
       font-size: 17px;
       color: var(--ink);
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(200, 90, 46, 0.12);
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--accent-dark);
     }
 
     .hero-points,
@@ -206,6 +270,35 @@
       margin: 0;
     }
 
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 248, 238, 0.9);
+      border: 1px solid rgba(231, 215, 191, 0.9);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .trust-pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex: 0 0 auto;
+    }
+
     .hero-side {
       display: grid;
       gap: 14px;
@@ -261,6 +354,18 @@
       margin-bottom: 14px;
     }
 
+    .section-head {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .section-copy {
+      margin: 0;
+      max-width: 72ch;
+      color: var(--muted);
+    }
+
     .cards {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -271,6 +376,14 @@
     .card {
       padding: 22px;
       background: linear-gradient(180deg, rgba(255, 253, 248, 1), rgba(255, 249, 240, 1));
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover,
+    .cue:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 44px rgba(66, 43, 22, 0.12);
+      border-color: rgba(200, 90, 46, 0.22);
     }
 
     .card h3 {
@@ -291,16 +404,237 @@
       margin-bottom: 12px;
     }
 
+    .audience-panel {
+      padding: 24px 26px;
+      border: 1px solid rgba(231, 215, 191, 0.95);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(251, 244, 232, 0.95));
+      box-shadow: var(--shadow);
+    }
+
+    .audience-note {
+      margin: 0 0 6px;
+      max-width: 66ch;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .audience-panel .simple-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 24px;
+      margin-top: 18px;
+    }
+
+    .audience-panel .simple-list li {
+      min-height: 48px;
+      padding: 14px 16px 14px 34px;
+      border-radius: 18px;
+      background: rgba(255, 248, 238, 0.92);
+      border: 1px solid rgba(231, 215, 191, 0.88);
+    }
+
+    .audience-panel .simple-list li::before {
+      left: 16px;
+    }
+
     .notice {
       padding: 22px;
       margin-top: 18px;
       background: linear-gradient(180deg, #fffdf8, #fbf4e8);
     }
 
+    .notice-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: start;
+      margin-top: 18px;
+    }
+
+    .note-card {
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(251, 244, 232, 0.95));
+      border: 1px solid rgba(231, 215, 191, 0.95);
+      box-shadow: var(--shadow);
+    }
+
+    .note-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .note-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
     .notice strong {
       display: block;
       margin-bottom: 8px;
       font-size: 18px;
+    }
+
+    .table-wrap {
+      margin-top: 20px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--paper);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 14px 16px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(231, 215, 191, 0.8);
+    }
+
+    .comparison-table th {
+      background: #2a211c;
+      color: #fffaf3;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .comparison-table td {
+      font-size: 14px;
+      color: var(--ink);
+      background: rgba(255, 253, 248, 0.92);
+    }
+
+    .comparison-table tbody tr:nth-child(even) td {
+      background: rgba(251, 244, 232, 0.92);
+    }
+
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-note {
+      margin: 12px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .comparison-table .is-primary {
+      background: linear-gradient(180deg, rgba(251, 224, 211, 0.7), rgba(255, 248, 238, 0.95));
+      font-weight: 700;
+    }
+
+    .comparison-cues {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .cue {
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(251, 244, 232, 0.96));
+      border: 1px solid rgba(231, 215, 191, 0.95);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .cue-label {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(42, 33, 28, 0.08);
+      color: var(--accent-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .cue strong {
+      display: block;
+      font-size: 19px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .cue p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(231, 215, 191, 0.95);
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(255, 249, 240, 0.96));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .faq-item[open] {
+      border-color: rgba(200, 90, 46, 0.4);
+      box-shadow: 0 20px 44px rgba(66, 43, 22, 0.12);
+    }
+
+    .faq-question {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 22px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .faq-question::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-question::after {
+      content: "+";
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(200, 90, 46, 0.12);
+      color: var(--accent-dark);
+      font-size: 22px;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .faq-item[open] .faq-question::after {
+      content: "−";
+    }
+
+    .faq-answer {
+      padding: 0 22px 20px;
+      color: var(--muted);
+    }
+
+    .faq-answer p {
+      margin: 0;
     }
 
     .final-box {
@@ -317,6 +651,32 @@
 
     .final-box .cta {
       box-shadow: none;
+    }
+
+    .final-list {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .final-list li {
+      padding-left: 18px;
+      position: relative;
+      color: rgba(255, 250, 243, 0.82);
+    }
+
+    .final-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.75em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #f3b08f;
+      transform: translateY(-50%);
     }
 
     footer {
@@ -351,7 +711,10 @@
 
     @media (max-width: 860px) {
       .hero-panel,
-      .cards {
+      .cards,
+      .audience-panel .simple-list,
+      .notice-row,
+      .comparison-cues {
         grid-template-columns: 1fr;
       }
 
@@ -363,12 +726,27 @@
       .final-box,
       .card,
       .stat,
-      .notice {
+      .notice,
+      .audience-panel,
+      .note-card {
         padding: 20px;
       }
 
       .cta {
         width: 100%;
+      }
+
+      .comparison-table {
+        min-width: 640px;
+      }
+
+      .faq-question {
+        font-size: 16px;
+        padding: 18px;
+      }
+
+      .faq-answer {
+        padding: 0 18px 18px;
       }
     }
   </style>
@@ -387,7 +765,8 @@
       <div class="wrap">
         <div class="hero-panel">
           <div>
-            <h1>3万円前後の中古ノートPCを、安く失敗しにくく選ぶ</h1>
+            <span class="hero-kicker">予算・保証・用途で絞りたい人向け</span>
+            <h1>3万円前後の中古ノートPCを、<span>安く失敗しにくく選ぶ</span></h1>
             <p class="lead">JUNKWORLDは、安いだけの候補探しではなく、保証・価格帯・在庫の豊富さ・選びやすさをまとめて見ながら決めたい人向けの選択肢です。</p>
             <ul class="hero-points">
               <li>3万円前後から探しやすい</li>
@@ -398,6 +777,11 @@
               <a class="cta" data-aff-link target="_blank" rel="noopener sponsored">JUNKWORLDで中古ノートPCの在庫を確認する</a>
             </div>
             <p class="cta-note">価格、保証内容、在庫状況は変動するため、最新情報はリンク先でご確認ください。</p>
+            <div class="hero-trust">
+              <span class="trust-pill">価格帯別に一覧化</span>
+              <span class="trust-pill">30日間保証あり</span>
+              <span class="trust-pill">状態とスペックを比較しやすい</span>
+            </div>
           </div>
 
           <aside class="hero-side" aria-label="購入判断のポイント">
@@ -423,45 +807,159 @@
 
     <section>
       <div class="wrap">
-        <span class="eyebrow">こんな人に向いています</span>
-        <ul class="simple-list">
-          <li>とにかく安くノートPCがほしい</li>
-          <li>新品は高すぎる</li>
-          <li>仕事・家庭用・サブ機として1台ほしい</li>
-          <li>中古でも、失敗は避けたい</li>
-        </ul>
+        <div class="audience-panel">
+          <span class="eyebrow">こんな人に向いています</span>
+          <p class="audience-note">「予算は抑えたいけれど、中古選びで外したくない」という人に向いた構成です。特に、仕事用や家庭用の実用品として1台を探している人と相性がいいです。</p>
+          <ul class="simple-list">
+            <li>とにかく安くノートPCがほしい</li>
+            <li>新品は高すぎる</li>
+            <li>仕事・家庭用・サブ機として1台ほしい</li>
+            <li>中古でも、失敗は避けたい</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section>
       <div class="wrap">
-        <h2 class="section-title">安い中古ノートPCで、JUNKWORLDを先に見る理由</h2>
+        <div class="section-head">
+          <h2 class="section-title">安い中古ノートPCで、JUNKWORLDを先に見る理由</h2>
+          <p class="section-copy">価格だけで選ぶと、保証や状態の確認が後回しになって失敗しやすくなります。JUNKWORLDは「まず候補を見つけてから絞る」流れを作りやすいのが強みです。</p>
+        </div>
         <div class="cards">
           <article class="card">
             <h3>価格帯が合う</h3>
-            <p>まずは3万円前後で探したい人にとって、価格帯から候補を作りやすいのが強みです。新品で予算オーバーになりやすい人でも、必要十分な1台を現実的に探しやすくなります。</p>
+            <p>まずは3万円前後で探したい人にとって、価格帯から候補を作りやすいのが強みです。2026年4月2日時点の掲載例では、<strong>ThinkPad X280が24,800円</strong>、<strong>Let's note CF-SV8が25,800円</strong>で見つかるため、新品で予算オーバーになりやすい人でも現実的に候補を作りやすくなります。</p>
           </article>
           <article class="card">
             <h3>保証があるから止まりにくい</h3>
-            <p>中古で一番止まりやすいのは「安いけど不安」です。安さだけでなく、保証を確認しながら候補を絞りたい人に向いています。</p>
+            <p>中古で一番止まりやすいのは「安いけど不安」です。2026年4月2日時点で確認したThinkPad X280やLet's note CF-SV8の掲載例でも、JUNKWORLDの案内は<strong>購入日から30日間保証</strong>（※一部商品を除く）です。価格だけでなく保証を見ながら候補を残しやすいのが安心材料になります。</p>
           </article>
           <article class="card">
             <h3>在庫が豊富で比較しやすい</h3>
-            <p>在庫が少ないと「あるものを買う」になりがちです。JUNKWORLDは価格、状態、スペックを見比べながら、条件に合う1台を探しやすいのが購入理由になります。</p>
+            <p>在庫が少ないと「あるものを買う」になりがちです。2026年4月2日時点でも、<strong>ThinkPad X280 24,800円</strong>、<strong>Let's note CF-SV8 25,800円</strong>、<strong>DELL Latitude 5300 27,800円</strong>、<strong>HP EliteBook 830 G6 24,800円</strong>など、価格と仕様の違う候補が並んでいました。価格、状態、スペックを見比べながら条件に合う1台を探しやすいのが購入理由になります。</p>
           </article>
           <article class="card">
             <h3>用途で絞りやすい</h3>
-            <p>仕事用、家庭用、サブ機など用途が決まっている人ほど、必要以上に高い機種はいりません。「安いけど足りない」も「不要に高い」も避けやすくなります。</p>
+            <p>仕事用、家庭用、サブ機など用途が決まっている人ほど、必要以上に高い機種はいりません。たとえば、<strong>軽さ重視ならLet's note CF-SV8 25,800円</strong>、<strong>キーボードや堅牢性重視ならThinkPad X280 24,800円</strong>、<strong>13インチ前後で拡張性も見たいならLatitude 5300 27,800円</strong>のように選び分けやすく、「安いけど足りない」も「不要に高い」も避けやすくなります。</p>
           </article>
         </div>
 
-        <div class="notice">
-          <strong>購入前に見るポイント</strong>
-          <ul class="check-list">
-            <li>用途に足りるスペックか</li>
-            <li>保証の範囲と期間はどうか</li>
-            <li>OS、ACアダプター、本体状態はどうか</li>
-          </ul>
+        <div class="notice-row">
+          <div class="notice">
+            <strong>購入前に見るポイント</strong>
+            <ul class="check-list">
+              <li>用途に足りるスペックか</li>
+              <li>保証の範囲と期間はどうか</li>
+              <li>OS、ACアダプター、本体状態はどうか</li>
+            </ul>
+          </div>
+          <aside class="note-card" aria-label="選び方のメモ">
+            <strong>迷ったらこの順番</strong>
+            <p>まず価格帯で候補を絞り、次にOSや付属品、最後にスペックと本体状態を確認すると、必要以上に高い機種へ流れにくくなります。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">比較して決めたい人向け</span>
+          <h2 class="section-title">中古PC通販ショップをざっくり比較</h2>
+          <p class="section-copy">保証期間の長さだけを見ると他店に強みがある一方で、JUNKWORLDは価格帯別の一覧から候補を作りやすいのが特徴です。2026年4月2日時点で各社の公開情報を確認すると、違いは次の通りです。</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>JUNKWORLD</th>
+                <th>イオシス</th>
+                <th>PC WRAP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>中古ノートPCの保証</td>
+                <td class="is-primary">30日間保証<br>※一部商品を除く</td>
+                <td>中古A〜Cランクは3ヶ月保証</td>
+                <td>対象商品は無料3年保証</td>
+              </tr>
+              <tr>
+                <td>価格帯での探しやすさ</td>
+                <td class="is-primary">9,999円以下、10,000円台、20,000円台、30,000円台などで一覧化</td>
+                <td>〜20,000円、20,000円〜30,000円、30,000円〜50,000円などで絞り込み可能</td>
+                <td>ノート〜19,999円、20,000円〜49,999円、50,000円〜でカテゴリ分け</td>
+              </tr>
+              <tr>
+                <td>探し方の特徴</td>
+                <td class="is-primary">価格帯から候補を作って比較しやすい</td>
+                <td>価格帯、メーカー、状態などの条件で絞り込みやすい</td>
+                <td>詳細検索と価格帯カテゴリで絞り込みやすい</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="comparison-note">※ 各社の保証条件、対象商品、在庫状況、価格帯の表示方法は変動する場合があります。購入前に各公式サイトの最新表示をご確認ください。</p>
+        <div class="comparison-cues">
+          <article class="cue">
+            <span class="cue-label">JUNKWORLDが向く人</span>
+            <strong>まず候補を広く出してから絞りたい</strong>
+            <p>3万円前後でどんな機種があるかを見て、保証や状態も含めて比較したい人と相性がいいです。</p>
+          </article>
+          <article class="cue">
+            <span class="cue-label">保証優先</span>
+            <strong>長めの保証を重視するなら他店も比較</strong>
+            <p>保証期間だけを軸にするなら、イオシスやPC WRAPも並べて見ると判断しやすくなります。</p>
+          </article>
+          <article class="cue">
+            <span class="cue-label">選び方のコツ</span>
+            <strong>価格帯で絞ってから用途で確認する</strong>
+            <p>先に予算で候補を狭め、その後にOS、付属品、スペックを見ると失敗しにくい流れになります。</p>
+          </article>
+        </div>
+
+        <div class="cta-row">
+          <a class="cta" data-aff-link target="_blank" rel="noopener sponsored">JUNKWORLDで価格帯別の在庫を確認する</a>
+          <p class="cta-note">まず候補を広めに見てから絞りたい人は、価格帯別の一覧から入るほうが判断しやすいです。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">不安を先に潰す</span>
+          <h2 class="section-title">よくある質問</h2>
+          <p class="section-copy">中古PCで止まりやすいのは、保証、OS、付属品、初期不良時の対応です。購入前に気になるポイントを先に整理しておくと判断が早くなります。</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-question">保証では何がカバーされますか？</summary>
+            <div class="faq-answer">
+              <p>JUNKWORLD公式のご利用案内では、中古パソコンは購入日より30日間の保証付きです。対象条件や保証範囲は商品ページとご利用案内で確認してから購入するのが安心です。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">OSはインストール済みですか？</summary>
+            <div class="faq-answer">
+              <p>多くの商品はOS付きですが、OS無しや保証無しの特価品もあります。商品ごとに条件が違うため、仕様欄でOSの有無を確認してから選んでください。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">届いた商品に不具合があったら？</summary>
+            <div class="faq-answer">
+              <p>保証期間内であれば、JUNKWORLDの案内に沿って修理や交換、同等品対応、返金などの対象になる場合があります。詳細は公式の保証案内に従って確認してください。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">どれくらいで発送されますか？</summary>
+            <div class="faq-answer">
+              <p>JUNKWORLD公式サイトでは、午後1時までに注文と入金確認ができた場合は当日出荷と案内されています。到着日は地域や指定時間で変わるため、余裕を持って確認するのがおすすめです。</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -471,6 +969,11 @@
         <div class="final-box">
           <h2 class="section-title">最安値だけで決めるより、予算・保証・用途で先に絞る</h2>
           <p>3万円前後で仕事用や家庭用に使える1台を探すなら、まずJUNKWORLDの在庫から確認するほうが失敗しにくいです。在庫や保証内容は変動するため、購入前に商品ページの表示を確認してから判断してください。</p>
+          <ul class="final-list">
+            <li>価格帯から候補を出しやすい</li>
+            <li>保証を見ながら比較しやすい</li>
+            <li>用途に合う1台へ絞り込みやすい</li>
+          </ul>
           <div class="cta-row">
             <a class="cta" data-aff-link target="_blank" rel="noopener sponsored">JUNKWORLDの中古ノートPC在庫を確認する</a>
           </div>
