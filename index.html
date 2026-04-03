@@ -1053,9 +1053,8 @@
 
     if (!missingAff) {
       document.querySelectorAll("[data-aff-link]").forEach(function(link) {
-        link.addEventListener("click", function(e) {
-          e.preventDefault();
-          gtag_report_conversion(CONFIG.AFF_LINK);
+        link.addEventListener("click", function() {
+          gtag_report_conversion();
         });
       });
     }
