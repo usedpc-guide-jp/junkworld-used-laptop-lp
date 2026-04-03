@@ -1003,6 +1003,19 @@
     </div>
   </footer>
   <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18057284722/Dw2qCNGblJUcEPKYsaJD',
+          'event_callback': callback
+      });
+      return false;
+    }
+
     const CONFIG = {
       AFF_LINK: "https://px.a8.net/svt/ejp?a8mat=4B1BLH+3CV0KY+3D5Y+BW8O2&a8ejpredirect=https%3A%2F%2Fwww.junkworld.jp%2F",
       PIXEL_SRC: "https://www12.a8.net/0.gif?a8mat=4B1BLH+3CV0KY+3D5Y+BW8O2",
@@ -1037,6 +1050,15 @@
     };
 
     const missingAff = setOrDisable("[data-aff-link]", CONFIG.AFF_LINK, "A8リンク");
+
+    if (!missingAff) {
+      document.querySelectorAll("[data-aff-link]").forEach(function(link) {
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          gtag_report_conversion(CONFIG.AFF_LINK);
+        });
+      });
+    }
     const missingOperator = setOrDisable("[data-operator-link]", CONFIG.OPERATOR_LINK, "運営者情報リンク");
     const missingPrivacy = setOrDisable("[data-privacy-link]", CONFIG.PRIVACY_LINK, "プライバシーポリシーリンク");
 
