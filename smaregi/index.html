@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POSレジ選びで失敗したくないなら — スマレジが選ばれる理由</title>
+  <meta name="description" content="レジ導入経験者の視点で、0円プランのあるクラウドPOSレジ「スマレジ」の特徴や料金の考え方を整理。最新の適用条件は公式情報の確認が前提です。">
+  <style>
+    :root {
+      --color-primary: #059669;
+      --color-primary-hover: #047857;
+      --color-bg: #ffffff;
+      --color-surface: #f0fdf4;
+      --color-text: #1e293b;
+      --color-text-light: #64748b;
+      --color-accent: #f59e0b;
+      --color-border: #e2e8f0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', Roboto, sans-serif;
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--color-primary); text-decoration: none; }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .narrow { max-width: 720px; margin: 0 auto; }
+    section { padding: 64px 0; }
+
+    /* FTC DISCLOSURE */
+    .disclosure {
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--color-text-light);
+      margin-bottom: 0;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 64px;
+      background: var(--color-surface);
+    }
+    .hero h1 {
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 .accent {
+      color: var(--color-primary);
+    }
+    .hero .subtitle {
+      font-size: 18px;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    /* CTA */
+    .cta {
+      display: inline-block;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 18px 44px;
+      border-radius: 8px;
+      transition: background 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .cta:hover { background: var(--color-primary-hover); color: #fff; }
+    .cta-note {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--color-text-light);
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 28px 24px;
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .trust-item {
+      font-size: 15px;
+      color: var(--color-text-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+    .trust-item .num {
+      color: var(--color-primary);
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    /* PAIN SECTION */
+    .pain {
+      background: #fff;
+    }
+    .pain h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+    .pain-list {
+      max-width: 640px;
+      margin: 0 auto;
+      list-style: none;
+    }
+    .pain-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.7;
+    }
+    .pain-list li::before {
+      content: "✕";
+      color: #ef4444;
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* FEATURES */
+    .features { background: var(--color-surface); }
+    .features h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .features .section-sub {
+      text-align: center;
+      color: var(--color-text-light);
+      font-size: 16px;
+      margin-bottom: 48px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .feature-card {
+      text-align: center;
+      padding: 28px 20px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+    }
+    .feature-icon {
+      font-size: 36px;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 15px;
+      color: var(--color-text-light);
+      line-height: 1.7;
+    }
+
+    /* PRICING */
+    .pricing {
+      background: var(--color-bg);
+      text-align: center;
+    }
+    .pricing h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .price-highlight {
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin: 20px 0 8px;
+    }
+    .price-note {
+      font-size: 16px;
+      color: var(--color-text-light);
+      margin-bottom: 12px;
+    }
+    .price-detail {
+      font-size: 14px;
+      color: var(--color-text-light);
+      margin-bottom: 32px;
+    }
+
+    /* AUDIENCE */
+    .audience h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+    .audience-list {
+      max-width: 640px;
+      margin: 0 auto;
+      list-style: none;
+    }
+    .audience-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.7;
+    }
+    .audience-list li::before {
+      content: "✓";
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* EXPERIENCE */
+    .experience {
+      background: var(--color-surface);
+    }
+    .experience-card {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px;
+      text-align: center;
+    }
+    .experience-card h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .experience-card p {
+      font-size: 16px;
+      color: var(--color-text);
+      line-height: 1.8;
+      text-align: left;
+    }
+    .experience-card .author {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--color-text-light);
+    }
+
+    /* FAQ */
+    .faq { background: var(--color-bg); }
+    .faq h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+    .faq-list {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+    }
+    .faq-item summary {
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::after {
+      content: "+";
+      font-size: 22px;
+      color: var(--color-text-light);
+    }
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+    .faq-item p {
+      margin-top: 12px;
+      font-size: 15px;
+      color: var(--color-text-light);
+      line-height: 1.7;
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+      text-align: center;
+      background: var(--color-surface);
+      padding: 80px 24px;
+    }
+    .final-cta h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .final-cta p {
+      font-size: 17px;
+      color: var(--color-text-light);
+      margin-bottom: 32px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    /* FOOTER */
+    .page-footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: #666;
+      border-top: 1px solid var(--color-border);
+    }
+    .page-footer a { color: #155DFC; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 20px 48px; }
+      .hero h1 { font-size: 26px; }
+      .hero .subtitle { font-size: 16px; }
+      .feature-grid { grid-template-columns: 1fr; gap: 16px; }
+      .cta { width: 100%; text-align: center; padding: 18px 24px; }
+      .trust-bar { gap: 16px; }
+      .price-highlight { font-size: 40px; }
+      section { padding: 48px 0; }
+      .pain h2, .features h2, .audience h2, .faq h2 { font-size: 24px; }
+      .final-cta h2 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 広告開示 -->
+  <div class="container" style="padding-top: 24px;">
+    <div class="disclosure">
+      【広告】本ページはアフィリエイトプログラムによる収益を得ています。掲載情報は2026年4月時点で確認した内容をもとに作成しています。最新の料金・条件・審査・キャンペーン適用可否は必ず公式サイトまたは問い合わせ窓口でご確認ください。
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>レジ選びで<span class="accent">失敗したくない</span>なら<br>まず知っておきたいこと</h1>
+      <p class="subtitle">比較サイトを何件も見て、結局どれがいいかわからない。そんな方に、レジ導入経験者の視点で「スマレジ」をわかりやすく解説します。</p>
+      <a href="#" class="cta" target="_blank" rel="noopener">スマレジについて問い合わせる</a>
+      <span class="cta-note">問い合わせ自体は無料です</span>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+      <div class="trust-item">
+        アクティブ店舗数 <span class="num">54,000突破</span><small style="font-size:13px; margin-left:4px;">※2025年10月時点・公式発表</small>
+      </div>
+    <div class="trust-item">
+      2013年度 グッドデザイン賞受賞
+    </div>
+  </div>
+
+  <!-- PAIN POINTS -->
+  <section class="pain">
+    <div class="container">
+      <h2>こんなレジの悩み、ありませんか？</h2>
+      <ul class="pain-list">
+        <li>レジと決済端末が連動しない。金額を二重入力して、打ち間違いが起きる</li>
+        <li>売上の集計を手作業でやっていて、レジと端末の数字が合わないことがある</li>
+        <li>外国人のお客さんに「タッチ決済できますか？」と聞かれて対応できない</li>
+        <li>QR・電子マネー・クレカ、どこまで対応すればいいのか判断がつかない</li>
+        <li>レジの入れ替えにいくらかかるのか見当がつかない</li>
+        <li>比較サイトを見ても情報が多すぎて決められない</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <h2>スマレジの主な特徴</h2>
+      <p class="section-sub">POSレジと決済端末をまとめて検討できます。</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">&#x00A5;0</div>
+          <h3>0円のスタンダードプランあり</h3>
+          <p>1店舗・基本レジ機能のみなら月額無料のスタンダードプランがあります。必要に応じて有料プランを検討する使い方も可能です。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4CA;</div>
+          <h3>売上状況を把握しやすい</h3>
+          <p>日別・時間帯別・商品別の売上データをクラウド上で確認できます。集計作業の負担軽減につながります。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4B3;</div>
+          <h3>対応する決済端末と連携可能</h3>
+          <p>対応する決済端末と連携することで、レジ入力金額を端末へ反映できます。二重入力の手間を減らし、入力ミスの軽減につながります。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F30F;</div>
+          <h3>クレカのタッチ決済に対応可能</h3>
+          <p>クレジットカードのタッチ決済に対応可能なため、現金以外の支払い手段を広げたい店舗の検討候補になります。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4F1;</div>
+          <h3>主要なキャッシュレス決済に対応</h3>
+          <p>クレジットカード、QRコード決済、電子マネーなど主要な決済方式をカバー。対応ブランドの詳細は公式サイトで確認できます。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4F6;</div>
+          <h3>4G回線内蔵の決済端末</h3>
+          <p>PAYGATE端末は4G回線を内蔵。ただしスマレジ連携時はWi-Fi接続が必要で、4Gでの決済はPAYGATE単独利用時に限られます。詳細は要問い合わせ。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4DE;</div>
+          <h3>サポート体制あり</h3>
+          <p>ヘルプサイトは24時間365日利用可能。サポートセンターへの問い合わせも用意されています。対応時間帯の詳細は公式サイトをご確認ください。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F3E5;</div>
+          <h3>幅広い業種で検討しやすい</h3>
+          <p>飲食店・小売・美容室・クリニックなど、業種別の案内ページや機能情報が用意されています。詳細は公式資料をご確認ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MID CTA -->
+  <section style="text-align: center; padding: 48px 24px; background: #fff;">
+    <a href="#" class="cta" target="_blank" rel="noopener">スマレジについて問い合わせる</a>
+    <span class="cta-note">問い合わせ自体は無料です · 導入費用や機能の確認に使えます</span>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing">
+    <div class="container">
+      <h2>料金プラン</h2>
+      <div class="price-highlight">¥0〜</div>
+      <p class="price-note">POSレジ スタンダードプラン：1店舗・基本レジ機能は月額無料<br><span style="font-size: 14px;">※上記は スタンダードプラン（1店舗・基本機能のみ）の場合です</span></p>
+      <p class="price-detail">有料プランは月額¥5,500〜。決済端末PAYGATEは中小事業者向け条件付きで決済手数料1.98%〜（対象外業種あり・条件変更の可能性あり）。端末代・月額費用・適用手数料・導入可否はプランや申込内容により異なります。詳細は公式サイトまたは問い合わせで確認してください。</p>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience">
+    <div class="experience-card">
+      <h2>テナント店舗でレジと決済端末を使っていた経験から</h2>
+      <p>
+        ※以下はスマレジ・PAYGATEの使用体験ではなく、テナント店舗で従来型レジと決済端末を運用していた経験に基づく個人的な所感です。
+      </p>
+      <p style="margin-top: 16px;">
+        私はテナントの店舗運営に関わっていました。当時はレジと決済端末が別々で連動しておらず、レジに金額を入力してから決済端末にも同じ金額を手入力する毎日。当然、打ち間違いは起きます。売上をオーナーに報告するとき、レジの数字と端末の数字が合わない――そのたびに原因を探す時間が無駄でした。
+      </p>
+        <p style="margin-top: 16px;">
+          私のいた現場では、外国人のお客さんからクレジットカードのタッチ決済に対応しているか聞かれることが多く、日本人のお客さんでもQR決済やタッチ決済を使う場面が増えていると感じていました。店舗によって利用傾向は異なるものの、複数のキャッシュレス決済に対応できる環境の重要性を実感していました。
+        </p>
+      <p style="margin-top: 16px;">
+        もう一つ、ネットワーク障害も本当につらかった。回線が落ちると決済端末が使えなくなり、現金対応に切り替えるしかない。混雑時にこれが起きるとお客さんを待たせることになります。レジと決済が連動し、回線の冗長性もあるシステムなら、こうした現場の苦労は減らせるはずです。
+      </p>
+      <p style="margin-top: 16px;">
+        レジと決済端末の連動や回線対策がどこまで可能かは、導入環境によって異なります。まずは問い合わせで自分の店舗に合うか確認するのが確実です。
+      </p>
+      <p class="author">— 当サイト運営者（テナント店舗での決済端末・レジ運用経験あり。スマレジ・PAYGATEの使用経験はありません）</p>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="audience">
+    <div class="container">
+      <h2>こんな方におすすめ</h2>
+      <ul class="audience-list">
+        <li>これから飲食店・カフェ・小売店を開業する方</li>
+        <li>古いレジスターからの入れ替えを検討している店舗オーナー</li>
+        <li>レジと決済端末の二重入力・売上ズレに困っている方</li>
+        <li>インバウンド客のタッチ決済に対応したい方</li>
+        <li>キャッシュレス決済を導入したいが何から始めればいいかわからない方</li>
+        <li>無料プランの有無を確認しながら比較検討したい方</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2>よくある質問</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>本当に0円で使えますか？</summary>
+          <p>はい。スタンダードプランは1店舗・基本的なレジ機能に限り月額無料です。まず無料で始めて、必要に応じて有料プランに切り替える使い方ができます。</p>
+        </details>
+        <details class="faq-item">
+          <summary>導入に専門知識は必要ですか？</summary>
+          <p>iPadにアプリを導入して使い始める案内がありますが、必要な設定や機器は利用環境によって異なります。不安がある場合は公式の導入案内やサポート情報を確認すると安心です。</p>
+        </details>
+        <details class="faq-item">
+          <summary>Airレジやスクエアとの違いは？</summary>
+          <p>各社それぞれ特徴が異なります。スマレジは公式サイト上で、売上分析・在庫管理・外部連携などの機能を案内しています。どのサービスが合うかは店舗の規模や業種によるため、複数社の資料を比較されることをおすすめします。</p>
+        </details>
+        <details class="faq-item">
+          <summary>問い合わせ後に連絡はありますか？</summary>
+          <p>問い合わせ内容に応じて、担当者からヒアリングの連絡が入る場合があります。連絡方法や時期は状況により異なるため、詳細は公式案内をご確認ください。</p>
+        </details>
+        <details class="faq-item">
+          <summary>今使っているレジからの移行は大変ですか？</summary>
+          <p>商品データはCSVで取り込める案内がありますが、移行作業の内容は現在のレジ環境やデータ形式によって異なります。事前に公式の導入案内や問い合わせで確認するのが安心です。</p>
+        </details>
+        <details class="faq-item">
+          <summary>レジと決済端末は連動できますか？</summary>
+          <p>スマレジはPAYGATE等の決済端末と連携可能です。レジで入力した金額を端末へ反映できるため、二重入力の手間の軽減につながります。対応端末の詳細は資料に記載されています。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>まずは問い合わせて確認するところから</h2>
+    <p>導入費用・機能・自店舗への適合性など、気になる点をまとめて確認できます。問い合わせ自体は無料です。</p>
+    <a href="#" class="cta" target="_blank" rel="noopener">スマレジについて問い合わせる</a>
+    <span class="cta-note">問い合わせ自体は無料です</span>
+  </section>
+
+  <section style="padding: 24px 24px 40px; background: #fff;">
+    <div class="narrow" style="font-size: 13px; color: var(--color-text-light);">
+      ※当ページは公式情報をもとに要点を整理した紹介ページです。最新の仕様、料金、審査、対象業種、キャンペーン、対応ブランドは変更される場合があります。最終判断の前に必ず公式案内をご確認ください。
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <p style="margin-bottom: 8px;"><a href="../operator.html">運営者情報</a> ｜ <a href="../privacy.html">プライバシーポリシー</a></p>
+    Built with <a href="https://list.affitor.com">Affiliate Skills by Affitor</a>
+  </footer>
+
+</body>
+</html>
