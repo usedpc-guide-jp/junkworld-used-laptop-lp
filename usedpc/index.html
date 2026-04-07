@@ -933,7 +933,7 @@
         </div>
 
         <div class="cta-row">
-          <a class="cta" data-aff-link target="_blank" rel="noopener sponsored">JUNKWORLDで価格帯別の在庫を確認する</a>
+          <a class="cta" data-aff-link-search target="_blank" rel="noopener sponsored">JUNKWORLDで価格帯別の在庫を確認する</a>
           <p class="cta-note">まず候補を広めに見てから絞りたい人は、価格帯別の一覧から入るほうが判断しやすいです。</p>
         </div>
         <p class="comparison-note" style="margin-top:18px;">3社の違いをもっと詳しく知りたい方は「<a href="blog/junkworld-vs-iosys-vs-pcwrap.html" style="color:var(--accent-dark);text-decoration:underline;text-underline-offset:0.18em;">JUNKWORLD vs イオシス vs PC WRAP 比較記事</a>」もご覧ください。</p>
@@ -987,7 +987,7 @@
             <li>用途に合う1台へ絞り込みやすい</li>
           </ul>
           <div class="cta-row">
-            <a class="cta" data-aff-link target="_blank" rel="noopener sponsored">JUNKWORLDの中古ノートPC在庫を確認する</a>
+            <a class="cta" data-aff-link-search target="_blank" rel="noopener sponsored">JUNKWORLDの中古ノートPC在庫を確認する</a>
           </div>
         </div>
       </div>
@@ -1020,6 +1020,7 @@
 
     const CONFIG = {
       AFF_LINK: "https://px.a8.net/svt/ejp?a8mat=4B1BLH+3CV0KY+3D5Y+BW8O2&a8ejpredirect=https%3A%2F%2Fwww.junkworld.jp%2F",
+      AFF_LINK_SEARCH: "https://px.a8.net/svt/ejp?a8mat=4B1BLH+3CV0KY+3D5Y+BW8O2&a8ejpredirect=https%3A%2F%2Fwww.junkworld.jp%2Fview%2Fsearch%3Fsearch_keyword%3D%26search_price_low%3D30000%26search_price_high%3D39999%26search_category%3Dct9",
       PIXEL_SRC: "https://www12.a8.net/0.gif?a8mat=4B1BLH+3CV0KY+3D5Y+BW8O2",
       OPERATOR_LINK: "../operator.html",
       PRIVACY_LINK: "../privacy.html"
@@ -1052,9 +1053,17 @@
     };
 
     const missingAff = setOrDisable("[data-aff-link]", CONFIG.AFF_LINK, "A8リンク");
+    const missingAffSearch = setOrDisable("[data-aff-link-search]", CONFIG.AFF_LINK_SEARCH, "A8リンク(検索)");
 
     if (!missingAff) {
       document.querySelectorAll("[data-aff-link]").forEach(function(link) {
+        link.addEventListener("click", function() {
+          gtag_report_conversion();
+        });
+      });
+    }
+    if (!missingAffSearch) {
+      document.querySelectorAll("[data-aff-link-search]").forEach(function(link) {
         link.addEventListener("click", function() {
           gtag_report_conversion();
         });
