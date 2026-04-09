@@ -1176,6 +1176,15 @@
         });
       });
     }
+    document.querySelectorAll(".card-products").forEach(function(container) {
+      container.addEventListener("click", function(e) {
+        var link = e.target.closest("a");
+        if (link && link.href) {
+          gtag_report_conversion();
+        }
+      });
+    });
+
     const missingOperator = setOrDisable("[data-operator-link]", CONFIG.OPERATOR_LINK, "運営者情報リンク");
     const missingPrivacy = setOrDisable("[data-privacy-link]", CONFIG.PRIVACY_LINK, "プライバシーポリシーリンク");
 
