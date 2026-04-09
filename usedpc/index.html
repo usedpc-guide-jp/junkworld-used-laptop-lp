@@ -242,18 +242,82 @@
     }
 
     .card-products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-      padding-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+      padding-top: 18px;
       border-top: 1px solid var(--line);
     }
 
-    .card-products img {
-      max-width: 100%;
-      height: auto;
+    .product-item {
+      display: flex;
+      flex-direction: column;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      transition: box-shadow 0.2s;
+    }
+
+    .product-item:hover {
+      box-shadow: 0 4px 16px rgba(66, 43, 22, 0.1);
+    }
+
+    .product-item .product-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
       border-radius: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8f5f0;
+    }
+
+    .product-item .product-img img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .product-item .product-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .product-item .product-spec {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .product-item .product-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .product-item .product-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-dark);
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+      margin-top: auto;
+    }
+
+    .product-item .product-link::after {
+      content: "\2192";
     }
 
     .cta-row {
@@ -858,35 +922,90 @@
             <h3>価格帯が合う</h3>
             <p>まずは3万円前後で探したい人にとって、価格帯から候補を作りやすいのが強みです。2026年4月9日時点の掲載例では、<strong>富士通 LIFEBOOK WA3/D1が24,800円</strong>、<strong>HP ProBook 430 G8が27,800円</strong>で見つかるため、新品で予算オーバーになりやすい人でも現実的に候補を作りやすくなります。</p>
             <div class="card-products">
-              <span class="a8ad 4AeUWKD-g7-vgizfb0"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizfb0"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091449","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/49/14/1_000000091449.jpg?1775462424"}});</script>
-              <span class="a8ad 4AeUWKD-g7-vgizpat"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizpat"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091411","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/14/1_000000091411.jpg?1775117259"}});</script>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizfb0"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizfb0"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091449","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/49/14/1_000000091449.jpg?1775462424"}});</script></div>
+                <div class="product-name">富士通 LIFEBOOK WA3/D1</div>
+                <div class="product-spec">Core i5 / 8GB / 512GB SSD / 15型 / Win11</div>
+                <div class="product-price">&yen;24,800</div>
+              </div>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizpat"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizpat"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091411","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/14/1_000000091411.jpg?1775117259"}});</script></div>
+                <div class="product-name">HP ProBook 430 G8</div>
+                <div class="product-spec">Core i3 / 8GB / 256GB SSD / 13型 / Win11</div>
+                <div class="product-price">&yen;27,800</div>
+              </div>
             </div>
           </article>
           <article class="card">
             <h3>保証があるから止まりにくい</h3>
             <p>中古で一番止まりやすいのは「安いけど不安」です。2026年4月9日時点で確認したHP ProBook 430 G8やNEC VersaPro VB-9の掲載例でも、JUNKWORLDの案内は<strong>購入日から30日間保証</strong>（※一部商品を除く）です。価格だけでなく保証を見ながら候補を残しやすいのが安心材料になります。</p>
             <div class="card-products">
-              <span class="a8ad 4AeUWKD-g7-vgizpat"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizpat"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091411","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/14/1_000000091411.jpg?1775117259"}});</script>
-              <span class="a8ad 4AeUWKD-g7-vgizBBo"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizBBo"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091811","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/18/1_000000091811.jpg?1775549207"}});</script>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizpat"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizpat"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091411","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/14/1_000000091411.jpg?1775117259"}});</script></div>
+                <div class="product-name">HP ProBook 430 G8</div>
+                <div class="product-spec">Core i3 / 8GB / 256GB SSD / 13型 / Win11</div>
+                <div class="product-price">&yen;27,800</div>
+              </div>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizBBo"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizBBo"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091811","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/18/1_000000091811.jpg?1775549207"}});</script></div>
+                <div class="product-name">NEC VersaPro VB-9</div>
+                <div class="product-spec">Core i5 / 8GB / 256GB SSD / 13型 / Win11</div>
+                <div class="product-price">&yen;29,800</div>
+              </div>
             </div>
           </article>
           <article class="card">
             <h3>在庫が豊富で比較しやすい</h3>
             <p>在庫が少ないと「あるものを買う」になりがちです。2026年4月9日時点でも、<strong>富士通 LIFEBOOK WA3/D1 24,800円</strong>、<strong>HP ProBook 430 G8 27,800円</strong>、<strong>NEC VersaPro VB-9 29,800円</strong>、<strong>HP EliteBook 830 G8 37,800円</strong>など、価格と仕様の違う候補が並んでいます。価格、状態、スペックを見比べながら条件に合う1台を探しやすいのが購入理由になります。</p>
             <div class="card-products">
-              <span class="a8ad 4AeUWKD-g7-vgizfb0"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizfb0"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091449","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/49/14/1_000000091449.jpg?1775462424"}});</script>
-              <span class="a8ad 4AeUWKD-g7-vgizpat"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizpat"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091411","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/14/1_000000091411.jpg?1775117259"}});</script>
-              <span class="a8ad 4AeUWKD-g7-vgizBBo"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizBBo"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091811","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/18/1_000000091811.jpg?1775549207"}});</script>
-              <span class="a8ad 4AeUWKD-g7-vgizPxQ"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizPxQ"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091833","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/33/18/1_000000091833.jpg?1775635875"}});</script>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizfb0"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizfb0"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091449","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/49/14/1_000000091449.jpg?1775462424"}});</script></div>
+                <div class="product-name">LIFEBOOK WA3/D1</div>
+                <div class="product-spec">Core i5 / 8GB / 512GB SSD / 15型</div>
+                <div class="product-price">&yen;24,800</div>
+              </div>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizpat"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizpat"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091411","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/14/1_000000091411.jpg?1775117259"}});</script></div>
+                <div class="product-name">ProBook 430 G8</div>
+                <div class="product-spec">Core i3 / 8GB / 256GB SSD / 13型</div>
+                <div class="product-price">&yen;27,800</div>
+              </div>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizBBo"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizBBo"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091811","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/18/1_000000091811.jpg?1775549207"}});</script></div>
+                <div class="product-name">VersaPro VB-9</div>
+                <div class="product-spec">Core i5 / 8GB / 256GB SSD / 13型</div>
+                <div class="product-price">&yen;29,800</div>
+              </div>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizPxQ"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizPxQ"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091833","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/33/18/1_000000091833.jpg?1775635875"}});</script></div>
+                <div class="product-name">EliteBook 830 G8</div>
+                <div class="product-spec">Core i5 / 8GB / 256GB SSD / 13型FHD</div>
+                <div class="product-price">&yen;37,800</div>
+              </div>
             </div>
           </article>
           <article class="card">
             <h3>用途で絞りやすい</h3>
             <p>仕事用、家庭用、サブ機など用途が決まっている人ほど、必要以上に高い機種はいりません。たとえば、<strong>15型・DVD付きで家庭用ならLIFEBOOK WA3/D1 24,800円</strong>、<strong>13型モバイルで仕事用ならNEC VersaPro VB-9 29,800円</strong>、<strong>FHD画面で性能も欲しいならEliteBook 830 G8 37,800円</strong>のように選び分けやすく、「安いけど足りない」も「不要に高い」も避けやすくなります。</p>
             <div class="card-products">
-              <span class="a8ad 4AeUWKD-g7-vgizfb0"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizfb0"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091449","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/49/14/1_000000091449.jpg?1775462424"}});</script>
-              <span class="a8ad 4AeUWKD-g7-vgizBBo"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizBBo"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091811","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/18/1_000000091811.jpg?1775549207"}});</script>
-              <span class="a8ad 4AeUWKD-g7-vgizPxQ"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizPxQ"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091833","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/33/18/1_000000091833.jpg?1775635875"}});</script>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizfb0"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizfb0"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091449","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/49/14/1_000000091449.jpg?1775462424"}});</script></div>
+                <div class="product-name">LIFEBOOK WA3/D1</div>
+                <div class="product-spec">15型 / DVD付き / 家庭用向き</div>
+                <div class="product-price">&yen;24,800</div>
+              </div>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizBBo"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizBBo"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091811","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/11/18/1_000000091811.jpg?1775549207"}});</script></div>
+                <div class="product-name">VersaPro VB-9</div>
+                <div class="product-spec">13型 / 軽量モバイル / 仕事用向き</div>
+                <div class="product-price">&yen;29,800</div>
+              </div>
+              <div class="product-item">
+                <div class="product-img"><span class="a8ad 4AeUWKD-g7-vgizPxQ"></span><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"4B1BLH+3CV0KY+3D5Y+BWGDT","alt":"商品リンク","id":"4AeUWKD-g7-vgizPxQ"},"goods": {"ejp":"h"+"ttps://www.junkworld.jp/view/item/000000091833","imu":"h"+"ttps://makeshop-multi-images.akamaized.net/junkworldecs/shopimages/33/18/1_000000091833.jpg?1775635875"}});</script></div>
+                <div class="product-name">EliteBook 830 G8</div>
+                <div class="product-spec">13型FHD / Core i5-11世代 / 性能重視</div>
+                <div class="product-price">&yen;37,800</div>
+              </div>
             </div>
           </article>
         </div>
