@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# 重複を避けるため /usedpc/blog/ 配下はクロール不要
+# 正規版は /blog/ 側
+Disallow: /usedpc/blog/
+
+Sitemap: https://usedpc-guide-jp.github.io/junkworld-used-laptop-lp/sitemap.xml
