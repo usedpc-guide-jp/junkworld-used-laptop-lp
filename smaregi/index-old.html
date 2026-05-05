@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAYGATE導入前ガイド | タッチ決済・QR決済を店舗会計にまとめる</title>
+  <meta name="description" content="PAYGATEを検討する店舗向けに、タッチ決済・QR決済・レジ連携・費用条件・導入前の確認点を整理。テナント店舗での決済端末運用経験も踏まえて解説します。">
+  <link rel="canonical" href="https://usedpc-guide-jp.github.io/junkworld-used-laptop-lp/smaregi/">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PAYGATE導入前ガイド">
+  <meta property="og:description" content="店舗のキャッシュレス決済を整理したい人向けに、PAYGATEの確認点をまとめた非公式ガイドです。">
+  <meta name="twitter:card" content="summary">
+  <style>
+    :root {
+      --ink: #123247;
+      --muted: #5b7283;
+      --blue: #12a6cf;
+      --blue-dark: #007ca9;
+      --blue-soft: #e8f9fd;
+      --yellow: #ffdc35;
+      --orange: #ff8d3a;
+      --paper: #f6fbfd;
+      --white: #ffffff;
+      --line: #d8edf5;
+      --shadow: 0 24px 70px rgba(18, 50, 71, 0.14);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "BIZ UDPGothic", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.8;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .a8-pixel {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .pr-bar {
+      background: #e9f8fc;
+      border-bottom: 1px solid #cfeaf3;
+      color: #31566b;
+      font-size: 13px;
+      padding: 10px 0;
+    }
+
+    .site-header {
+      position: absolute;
+      inset: 48px 0 auto;
+      z-index: 5;
+      color: #ffffff;
+    }
+
+    .site-header .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .nav a {
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.52);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      color: #ffffff;
+      overflow: hidden;
+      isolation: isolate;
+      display: grid;
+      align-items: center;
+      padding: 160px 0 86px;
+      background: #123247;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(90deg, rgba(18, 50, 71, 0.92) 0%, rgba(18, 50, 71, 0.74) 43%, rgba(18, 50, 71, 0.24) 100%),
+        url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=82") center right / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 140px;
+      z-index: -2;
+      background: linear-gradient(180deg, transparent, var(--paper));
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(255, 220, 53, 0.95);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.18;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: 58px;
+      text-wrap: balance;
+    }
+
+    .lead {
+      max-width: 650px;
+      margin: 24px 0 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 15px 26px;
+      border-radius: 999px;
+      border: 2px solid transparent;
+      font-weight: 900;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      background: var(--yellow);
+      color: var(--ink);
+      box-shadow: 0 18px 45px rgba(255, 220, 53, 0.32);
+    }
+
+    .button.secondary {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.56);
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(10px);
+    }
+
+    .micro-note {
+      margin: 14px 0 0;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 12px;
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 24px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.70);
+    }
+
+    .hero-card-photo {
+      height: 260px;
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-card-photo span {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(18, 50, 71, 0.82);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .price-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .price-chip {
+      padding: 17px;
+      border-radius: 20px;
+      background: #f0fbff;
+      border: 1px solid var(--line);
+    }
+
+    .price-chip strong {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 30px;
+      line-height: 1.05;
+    }
+
+    .price-chip span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .trust-row {
+      position: relative;
+      z-index: 2;
+      margin-top: -44px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .trust-item {
+      min-height: 138px;
+      padding: 22px;
+      border-radius: 24px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 40px rgba(18, 50, 71, 0.09);
+    }
+
+    .trust-item strong {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .trust-item span {
+      display: block;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 46px;
+      align-items: end;
+      margin-bottom: 36px;
+    }
+
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: 42px;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    .section-head p,
+    .muted {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .photo-split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      overflow: hidden;
+      border-radius: 34px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 55px rgba(18, 50, 71, 0.10);
+    }
+
+    .photo-split .photo {
+      min-height: 460px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-split .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(18, 50, 71, 0.78);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .split-copy {
+      padding: 48px;
+      display: grid;
+      align-content: center;
+    }
+
+    .split-copy h3 {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+      display: grid;
+      gap: 13px;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 32px;
+      color: #345267;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: inset 0 0 0 5px var(--blue);
+    }
+
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .scene-card {
+      overflow: hidden;
+      border-radius: 28px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 45px rgba(18, 50, 71, 0.09);
+    }
+
+    .scene-card .scene-photo {
+      height: 230px;
+      overflow: hidden;
+      background: #dff7fc;
+    }
+
+    .scene-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .scene-body {
+      padding: 24px;
+    }
+
+    .scene-body h3 {
+      font-size: 23px;
+      margin-bottom: 9px;
+    }
+
+    .scene-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .banner-box {
+      display: grid;
+      place-items: center;
+      min-height: 230px;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 16% 12%, rgba(255, 220, 53, 0.48), transparent 25%),
+        linear-gradient(145deg, #e7f8fc, #ffffff);
+    }
+
+    .banner-box a {
+      display: block;
+      line-height: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 16px 34px rgba(18, 50, 71, 0.16);
+    }
+
+    .banner-box img:not(.a8-pixel) {
+      width: 300px;
+      height: 250px;
+      object-fit: contain;
+      background: #ffffff;
+    }
+
+    .experience {
+      background:
+        radial-gradient(circle at 12% 20%, rgba(255, 220, 53, 0.28), transparent 18%),
+        linear-gradient(180deg, #ffffff, #e7f8fc);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .experience-photo {
+      min-height: 520px;
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 55px rgba(18, 50, 71, 0.12);
+    }
+
+    .experience-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .experience-copy {
+      padding: 42px;
+      border-radius: 34px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 55px rgba(18, 50, 71, 0.10);
+    }
+
+    .experience-label {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--yellow);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .experience-copy h2 {
+      font-size: 36px;
+    }
+
+    .experience-copy p {
+      margin: 15px 0 0;
+      color: var(--muted);
+    }
+
+    .quote-card {
+      margin-top: 22px;
+      padding: 20px;
+      border-left: 6px solid var(--blue);
+      border-radius: 18px;
+      background: #f0fbff;
+      color: #31566b;
+      font-weight: 800;
+    }
+
+    .fine-note {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff9d8;
+      border: 1px solid #f1dc7a;
+      color: #6d5d22;
+      font-size: 13px;
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .price-box {
+      padding: 34px;
+      border-radius: 30px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 45px rgba(18, 50, 71, 0.09);
+    }
+
+    .price-box.highlight {
+      background:
+        radial-gradient(circle at 82% 20%, rgba(255, 220, 53, 0.34), transparent 22%),
+        #ffffff;
+      border-color: #f1dc7a;
+    }
+
+    .price-label {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .price-main {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1.08;
+    }
+
+    .price-main small {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .price-box p {
+      margin: 15px 0 0;
+      color: var(--muted);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      counter-reset: flow;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 196px;
+      padding: 25px;
+      border-radius: 26px;
+      background: #123247;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .flow-step::before {
+      counter-increment: flow;
+      content: "0" counter(flow);
+      position: absolute;
+      right: 18px;
+      bottom: -17px;
+      color: rgba(255, 255, 255, 0.12);
+      font-size: 82px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .flow-step h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+    }
+
+    .cta-section {
+      color: #ffffff;
+      background:
+        linear-gradient(90deg, rgba(18, 50, 71, 0.94), rgba(0, 124, 169, 0.76)),
+        url("https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=1600&q=82") center / cover no-repeat;
+    }
+
+    .cta-box {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+      padding: 40px;
+      border-radius: 34px;
+      background: rgba(18, 50, 71, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      backdrop-filter: blur(10px);
+    }
+
+    .cta-box h2 {
+      color: #ffffff;
+    }
+
+    .cta-box p {
+      margin: 16px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
+    }
+
+    details {
+      padding: 20px 22px;
+      border-radius: 20px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(18, 50, 71, 0.06);
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    details p {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 38px 0;
+      background: #123247;
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.34);
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        position: absolute;
+        inset: 44px 0 auto;
+      }
+
+      .site-header .wrap {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding-top: 190px;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(18, 50, 71, 0.94) 0%, rgba(18, 50, 71, 0.76) 58%, rgba(18, 50, 71, 0.36) 100%),
+          url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=82") center / cover no-repeat;
+      }
+
+      .hero-grid,
+      .section-head,
+      .photo-split,
+      .scene-grid,
+      .experience-grid,
+      .pricing,
+      .flow,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      h2 {
+        font-size: 32px;
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-card {
+        margin-top: 16px;
+      }
+
+      .experience-photo {
+        min-height: 340px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .price-strip,
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 66px 0;
+      }
+
+      .split-copy,
+      .experience-copy,
+      .price-box,
+      .cta-box {
+        padding: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pr-bar">
+    <div class="wrap">
+      PR：当サイトはアフィリエイト広告を利用しています。株式会社スマレジの公式サイトではありません。料金・キャンペーン・審査条件は変更される場合があるため、申込前に公式情報をご確認ください。
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">非公式 PAYGATE導入前ガイド</div>
+      <nav class="nav" aria-label="ページ内ナビゲーション">
+        <a href="#touch">タッチ決済</a>
+        <a href="#scenes">利用シーン</a>
+        <a href="#experience">体験談</a>
+        <a href="#cost">費用</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">店舗のキャッシュレス決済を、1台に整理したい人へ</p>
+        <h1>タッチ決済もQRも。会計まわりを、もっと軽くする。</h1>
+        <p class="lead">
+          PAYGATEは、カード・電子マネー・QRコード決済などを1台にまとめやすいマルチ決済端末です。
+          ただ安く入れるだけではなく、二重入力・決済手段不足・店頭の混雑をどう減らすかまで考えて選ぶ必要があります。
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HXKQQ" target="_blank" rel="nofollow sponsored noopener" data-cta="hero_consult">PAYGATEの問い合わせページを見る</a>
+          <img class="a8-pixel" border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4B1FHK+4V1HEI+4Z10+HXKQQ" alt="">
+          <a class="button secondary" href="#experience" data-cta="hero_experience">運営者の体験談を読む</a>
+        </div>
+        <p class="micro-note">※問い合わせページへ移動します。資料ダウンロードではなく、問い合わせ導線を主導線にしています。</p>
+      </div>
+
+      <aside class="hero-card" aria-label="PAYGATE検討時の要点">
+        <div class="hero-card-photo">
+          <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&w=1000&q=82" alt="キャッシュレス決済を行う店舗カウンターのイメージ写真">
+          <span>イメージ写真</span>
+        </div>
+        <div class="price-strip">
+          <div class="price-chip">
+            <strong>1.98%〜</strong>
+            <span>中小事業者向け条件の案内あり</span>
+          </div>
+          <div class="price-chip">
+            <strong>0円</strong>
+            <span>初期費用・端末代キャンペーンの案内あり</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <div class="trust-row">
+      <div class="wrap">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <strong>約30種類の決済に対応</strong>
+            <span>カード、電子マネー、QRコードなど。対応ブランドは申込前に確認が必要です。</span>
+          </div>
+          <div class="trust-item">
+            <strong>プリンター内蔵</strong>
+            <span>レシート印刷まで1台で対応しやすく、レジ前をすっきりさせやすい設計です。</span>
+          </div>
+          <div class="trust-item">
+            <strong>タッチ決済に対応</strong>
+            <span>海外客やカード利用者の「かざして払いたい」ニーズを受けやすくなります。</span>
+          </div>
+          <div class="trust-item">
+            <strong>問い合わせ前提で確認</strong>
+            <span>料率、端末代、4G利用、連携条件は店舗条件により変わります。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="touch">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">CONTACTLESS PAYMENT</p>
+            <h2>タッチ決済に対応できないと、取りこぼす会計がある。</h2>
+          </div>
+          <p>
+            国や地域によって差はありますが、海外ではクレジットカードのタッチ決済が日常的に使われている場面が多くあります。
+            とくに観光客や出張客が来る店舗では、「カードはあるのに、いつもの支払い方ができない」という小さな不便が起きやすくなります。
+          </p>
+        </div>
+
+        <div class="photo-split">
+          <div class="photo">
+            <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=1300&q=82" alt="クレジットカードで支払うイメージ写真">
+            <span class="photo-caption">イメージ写真</span>
+          </div>
+          <div class="split-copy">
+            <h3>決済手段は、接客体験の一部です。</h3>
+            <p class="muted">
+              タッチ決済が使えないと、現金・差し込み・別のQR決済への案内が必要になり、会計が少し止まります。
+              一度の差は小さくても、混雑時や海外客対応では体感差が出ます。
+            </p>
+            <ul class="check-list">
+              <li>海外客・観光客の来店がある</li>
+              <li>カード決済の利用率を上げたい</li>
+              <li>会計時の説明や待ち時間を減らしたい</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scenes">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">USE CASES</p>
+            <h2>写真で見る、PAYGATEを検討しやすい現場。</h2>
+          </div>
+          <p>
+            PAYGATEは「対面で決済する場面」がある事業者向けの選択肢です。
+            決済サービスを使わない業種・実態のない申込は成果対象外になり得るため、実際の店舗運用に合うかを前提に確認してください。
+          </p>
+        </div>
+
+        <div class="scene-grid">
+          <article class="scene-card">
+            <div class="banner-box">
+              <a href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HWI5T" target="_blank" rel="nofollow sponsored noopener" data-cta="banner_fee">
+                <img border="0" width="300" height="250" alt="PAYGATEの広告バナー" src="https://www29.a8.net/svt/bgt?aid=260407208294&wid=002&eno=01&mid=s00000023202003007000&mc=1">
+              </a>
+              <img class="a8-pixel" border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4B1FHK+4V1HEI+4Z10+HWI5T" alt="">
+            </div>
+            <div class="scene-body">
+              <h3>初期費用を抑えたい店舗</h3>
+              <p>端末代や手数料条件は必ず確認しつつ、導入コストを抑えたい店舗の候補になります。</p>
+            </div>
+          </article>
+
+          <article class="scene-card">
+            <div class="scene-photo">
+              <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1000&q=82" alt="カフェ店舗のイメージ写真">
+            </div>
+            <div class="scene-body">
+              <h3>飲食店・カフェ</h3>
+              <p>店頭会計でカード、電子マネー、QR決済の案内をまとめたい店舗と相性があります。</p>
+            </div>
+          </article>
+
+          <article class="scene-card">
+            <div class="scene-photo">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=82" alt="飲食店内のイメージ写真">
+            </div>
+            <div class="scene-body">
+              <h3>小売・イベント販売</h3>
+              <p>レジ前の端末を減らしたい、催事や移動販売でも決済手段を増やしたい場合に検討できます。</p>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="wrap">
+        <div class="experience-grid">
+          <div class="experience-photo">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1100&q=82" alt="店舗会計と売上確認のイメージ写真">
+            <span class="photo-caption">イメージ写真</span>
+          </div>
+          <div class="experience-copy">
+            <span class="experience-label">運営者の体験から</span>
+            <h2>レジと決済端末が別々だと、数字も接客も重くなる。</h2>
+            <p>
+              私は以前、テナント店舗の運営に関わっていました。当時はレジと決済端末が連動しておらず、レジに入力した金額を決済端末にも手入力する運用でした。
+              混雑時ほど打ち間違いが起きやすく、あとから売上数字が合わない原因を探す時間も発生していました。
+            </p>
+            <p>
+              さらに、外国人のお客さんから「タッチ決済は使えますか」と聞かれる場面がありました。
+              国や地域によりますが、海外ではクレジットカードのタッチ決済が主流に近い場面も多く、対応できないとその需要を見込めない、少なくとも会計体験で不利になると感じました。
+            </p>
+            <div class="quote-card">
+              決済端末は「支払えればいい機械」ではなく、レジ前の待ち時間、スタッフの入力ミス、海外客の使いやすさまで左右する道具です。
+            </div>
+            <div class="fine-note">
+              ※これはスマレジ・PAYGATEの使用体験ではなく、従来型レジと決済端末を使っていた店舗運営経験に基づく所感です。実際の使い勝手や導入可否は、店舗環境・契約条件・通信環境により異なります。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cost">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">COST CHECK</p>
+            <h2>料金は、手数料だけで判断しない。</h2>
+          </div>
+          <p>
+            決済端末は、月額費用・端末代・決済手数料・キャンペーン適用・審査条件をまとめて確認する必要があります。
+            料金訴求は魅力的ですが、自分の店舗で適用されるかは問い合わせ前提で見てください。
+          </p>
+        </div>
+
+        <div class="pricing">
+          <div class="price-box highlight">
+            <p class="price-label">中小事業者向け条件</p>
+            <div class="price-main">1.98%〜 <small>適用には条件があります</small></div>
+            <p>中小事業者向けに、カード決済手数料1.98%からの案内があります。対象業種、事業規模、既存契約などで適用可否が変わります。</p>
+          </div>
+          <div class="price-box">
+            <p class="price-label">初期費用・端末代</p>
+            <div class="price-main">0円案内あり <small>キャンペーン条件を確認</small></div>
+            <p>初期費用・端末代0円キャンペーンの案内があります。時期や申込内容により条件が変わるため、公式ページで最新条件を確認してください。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="check">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">BEFORE APPLY</p>
+            <h2>問い合わせ前に、4つだけ決めておく。</h2>
+          </div>
+          <p>
+            いきなり申し込むより、店舗の会計導線と必要決済を整理してから相談する方が、プランや端末条件の確認がスムーズです。
+          </p>
+        </div>
+
+        <div class="flow">
+          <div class="flow-step">
+            <h3>必要な決済</h3>
+            <p>カード、タッチ決済、電子マネー、QR決済のうち必須のものを整理します。</p>
+          </div>
+          <div class="flow-step">
+            <h3>店舗の業態</h3>
+            <p>飲食、小売、移動販売、訪問サービスなど、対面決済の実態を確認します。</p>
+          </div>
+          <div class="flow-step">
+            <h3>通信環境</h3>
+            <p>店内Wi-Fi、4G利用、屋外利用の有無を確認します。連携利用時は特に重要です。</p>
+          </div>
+          <div class="flow-step">
+            <h3>費用条件</h3>
+            <p>端末代、月額、手数料、キャンペーン、審査期間をまとめて確認します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-label="問い合わせ">
+      <div class="wrap">
+        <div class="cta-box">
+          <div>
+            <p class="kicker">NEXT STEP</p>
+            <h2>自分の店舗で使える条件か、まず問い合わせで確認。</h2>
+            <p>
+              PAYGATEは、決済手段を増やしたい店舗にとって魅力的な候補です。
+              ただし、料率・キャンペーン・審査・4G利用・連携条件は店舗ごとに確認が必要です。
+            </p>
+          </div>
+          <div>
+            <a class="button primary" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HXKQQ" target="_blank" rel="nofollow sponsored noopener" data-cta="bottom_consult">PAYGATEの問い合わせページを見る</a>
+            <img class="a8-pixel" border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4B1FHK+4V1HEI+4Z10+HXKQQ" alt="">
+            <p class="micro-note">※問い合わせページへ移動します。料金・キャンペーン・適用条件は公式ページでご確認ください。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">FAQ</p>
+            <h2>導入前によくある確認</h2>
+          </div>
+          <p>断定しすぎず、条件確認が必要な点を明記しています。最終判断は公式ページ・問い合わせで確認してください。</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>タッチ決済に対応していることは重要ですか？</summary>
+            <p>重要になりやすいです。国や地域差はありますが、海外ではカードのタッチ決済が日常的に使われる場面が多く、対応できないと会計体験で不利になる可能性があります。</p>
+          </details>
+          <details>
+            <summary>1.98%の手数料は誰でも使えますか？</summary>
+            <p>いいえ。中小事業者向けの条件を満たす場合に案内される料率で、対象外業種や事業規模などの条件があります。最新条件は問い合わせで確認してください。</p>
+          </details>
+          <details>
+            <summary>スマレジと連携する場合も4Gで使えますか？</summary>
+            <p>公式案内では、スマレジ連携を行う場合はWi-Fi通信が必要とされています。4G利用はPAYGATE単独利用時や契約プランに関係するため、導入前に確認してください。</p>
+          </details>
+          <details>
+            <summary>資料ダウンロードではなく問い合わせにしている理由は？</summary>
+            <p>広告主プログラムの条件に合わせ、資料ダウンロードではなく問い合わせページへの導線を主導線にしています。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><a href="../operator.html">運営者情報</a> ｜ <a href="../privacy.html">プライバシーポリシー</a></p>
+      <p>掲載内容は調査時点の情報です。料金、キャンペーン、審査条件、対応ブランドは変更される場合があります。申込前に必ず公式サイトで最新情報をご確認ください。写真は利用シーンのイメージです。</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll("[data-cta]").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (typeof window.gtag !== "function") return;
+        window.gtag("event", "paygate_cta_click", {
+          event_category: "affiliate_lp",
+          event_label: link.dataset.cta
+        });
+      });
+    });
+  </script>
+</body>
+</html>

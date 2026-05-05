@@ -3,559 +3,1519 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>POSレジ選びで失敗したくないなら — スマレジが選ばれる理由</title>
-  <meta name="description" content="レジ導入経験者の視点で、0円プランのあるクラウドPOSレジ「スマレジ」の特徴や料金の考え方を整理。最新の適用条件は公式情報の確認が前提です。">
+  <title>マルチ決済端末PAYGATE｜飲食店・小売・移動販売向け 導入前ガイド</title>
+  <meta name="description" content="飲食店・小売・キッチンカー・訪問サービス・個人タクシー向けに、マルチ決済端末PAYGATEの導入条件、手数料、キャンペーン、業種別の使い方を整理した非公式ガイドです。">
+  <link rel="canonical" href="https://usedpc-guide-jp.github.io/junkworld-used-laptop-lp/smaregi/">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PAYGATE導入前ガイド｜業種別の使い方と費用を整理">
+  <meta property="og:description" content="店舗のキャッシュレス決済を1台に整理したい人向けに、PAYGATEの導入前確認点を業種別にまとめた非公式ガイド。">
+  <meta name="twitter:card" content="summary">
   <style>
     :root {
-      --color-primary: #059669;
-      --color-primary-hover: #047857;
-      --color-bg: #ffffff;
-      --color-surface: #f0fdf4;
-      --color-text: #1e293b;
-      --color-text-light: #64748b;
-      --color-accent: #f59e0b;
-      --color-border: #e2e8f0;
+      --ink: #0f2a3d;
+      --ink-soft: #1f4258;
+      --muted: #5a7384;
+      --muted-2: #8aa2b1;
+      --accent: #0c6db0;
+      --accent-dark: #064d80;
+      --accent-soft: #e6f3fb;
+      --highlight: #ffd233;
+      --highlight-soft: #fff7d9;
+      --warn: #d97706;
+      --paper: #f4f8fb;
+      --white: #ffffff;
+      --line: #d6e4ed;
+      --line-soft: #e8eff4;
+      --shadow-sm: 0 2px 8px rgba(15, 42, 61, 0.06);
+      --shadow: 0 12px 32px rgba(15, 42, 61, 0.10);
+      --shadow-lg: 0 24px 60px rgba(15, 42, 61, 0.14);
+      --radius-sm: 12px;
+      --radius: 18px;
+      --radius-lg: 28px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', Roboto, sans-serif;
-      color: var(--color-text);
-      background: var(--color-bg);
-      line-height: 1.8;
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "BIZ UDPGothic", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", system-ui, sans-serif;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--color-primary); text-decoration: none; }
 
-    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-    .narrow { max-width: 720px; margin: 0 auto; }
-    section { padding: 64px 0; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
 
-    /* FTC DISCLOSURE */
-    .disclosure {
-      background: var(--color-surface);
-      border-left: 3px solid var(--color-primary);
-      padding: 12px 16px;
-      font-size: 13px;
-      color: var(--color-text-light);
-      margin-bottom: 0;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
+    .a8-pixel {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
     }
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 80px 24px 64px;
-      background: var(--color-surface);
-    }
-    .hero h1 {
-      font-size: 38px;
-      font-weight: 800;
-      line-height: 1.3;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
-    }
-    .hero h1 .accent {
-      color: var(--color-primary);
-    }
-    .hero .subtitle {
-      font-size: 18px;
-      color: var(--color-text-light);
-      max-width: 600px;
-      margin: 0 auto 32px;
-      line-height: 1.7;
+    .wrap {
+      width: min(1140px, calc(100% - 32px));
+      margin: 0 auto;
     }
 
-    /* CTA */
-    .cta {
-      display: inline-block;
-      background: var(--color-primary);
-      color: #fff;
-      font-size: 18px;
-      font-weight: 700;
-      padding: 18px 44px;
-      border-radius: 8px;
-      transition: background 0.2s;
-      cursor: pointer;
-      border: none;
+    /* ============ PR BAR ============ */
+    .pr-bar {
+      background: #fff8e1;
+      border-bottom: 1px solid #f0dca6;
+      color: #6d5d22;
+      font-size: 12.5px;
+      padding: 10px 0;
+      line-height: 1.6;
     }
-    .cta:hover { background: var(--color-primary-hover); color: #fff; }
-    .cta-note {
+
+    .pr-bar strong {
+      color: var(--ink);
+    }
+
+    /* ============ HEADER ============ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .site-header .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 0;
+    }
+
+    .brand {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+
+    .brand span {
       display: block;
-      margin-top: 10px;
-      font-size: 13px;
-      color: var(--color-text-light);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.08em;
     }
 
-    /* TRUST BAR */
-    .trust-bar {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
-      padding: 28px 24px;
-      border-bottom: 1px solid var(--color-border);
-      background: var(--color-bg);
-    }
-    .trust-item {
-      font-size: 15px;
-      color: var(--color-text-light);
-      display: flex;
+    .header-cta {
+      display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-weight: 600;
-    }
-    .trust-item .num {
-      color: var(--color-primary);
-      font-size: 20px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 13px;
       font-weight: 800;
+      box-shadow: 0 4px 12px rgba(12, 109, 176, 0.25);
+      transition: background 0.2s;
     }
 
-    /* PAIN SECTION */
-    .pain {
-      background: #fff;
-    }
-    .pain h2 {
-      text-align: center;
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 32px;
-    }
-    .pain-list {
-      max-width: 640px;
-      margin: 0 auto;
-      list-style: none;
-    }
-    .pain-list li {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--color-border);
-      font-size: 16px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      line-height: 1.7;
-    }
-    .pain-list li::before {
-      content: "✕";
-      color: #ef4444;
-      font-weight: 700;
-      font-size: 18px;
-      flex-shrink: 0;
-      margin-top: 2px;
+    .header-cta:hover { background: var(--accent-dark); }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      padding: 56px 0 48px;
+      background: linear-gradient(180deg, #ffffff 0%, var(--accent-soft) 100%);
+      overflow: hidden;
     }
 
-    /* FEATURES */
-    .features { background: var(--color-surface); }
-    .features h2 {
-      text-align: center;
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .features .section-sub {
-      text-align: center;
-      color: var(--color-text-light);
-      font-size: 16px;
-      margin-bottom: 48px;
-    }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .feature-card {
-      text-align: center;
-      padding: 28px 20px;
-      background: #fff;
-      border-radius: 12px;
-      border: 1px solid var(--color-border);
-    }
-    .feature-icon {
-      font-size: 36px;
-      margin-bottom: 14px;
-    }
-    .feature-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .feature-card p {
-      font-size: 15px;
-      color: var(--color-text-light);
-      line-height: 1.7;
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 210, 51, 0.18), transparent 70%);
+      pointer-events: none;
     }
 
-    /* PRICING */
-    .pricing {
-      background: var(--color-bg);
-      text-align: center;
-    }
-    .pricing h2 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .price-highlight {
-      font-size: 52px;
+    .hero-target {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 13px;
       font-weight: 800;
-      color: var(--color-primary);
-      margin: 20px 0 8px;
-    }
-    .price-note {
-      font-size: 16px;
-      color: var(--color-text-light);
-      margin-bottom: 12px;
-    }
-    .price-detail {
-      font-size: 14px;
-      color: var(--color-text-light);
-      margin-bottom: 32px;
-    }
-
-    /* AUDIENCE */
-    .audience h2 {
-      text-align: center;
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 32px;
-    }
-    .audience-list {
-      max-width: 640px;
-      margin: 0 auto;
-      list-style: none;
-    }
-    .audience-list li {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--color-border);
-      font-size: 16px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      line-height: 1.7;
-    }
-    .audience-list li::before {
-      content: "✓";
-      color: var(--color-primary);
-      font-weight: 700;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    /* EXPERIENCE */
-    .experience {
-      background: var(--color-surface);
-    }
-    .experience-card {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 32px;
-      text-align: center;
-    }
-    .experience-card h2 {
-      font-size: 24px;
-      font-weight: 700;
       margin-bottom: 20px;
     }
-    .experience-card p {
-      font-size: 16px;
-      color: var(--color-text);
-      line-height: 1.8;
-      text-align: left;
-    }
-    .experience-card .author {
-      margin-top: 20px;
-      font-size: 14px;
-      color: var(--color-text-light);
+
+    .hero-target::before {
+      content: "▶";
+      font-size: 10px;
+      color: var(--highlight);
     }
 
-    /* FAQ */
-    .faq { background: var(--color-bg); }
-    .faq h2 {
-      text-align: center;
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 32px;
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
     }
-    .faq-list {
-      max-width: 640px;
-      margin: 0 auto;
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+      background: linear-gradient(180deg, transparent 65%, var(--highlight-soft) 65%);
+      padding: 0 4px;
     }
-    .faq-item {
-      border-bottom: 1px solid var(--color-border);
-      padding: 20px 0;
-    }
-    .faq-item summary {
+
+    .hero-lead {
+      margin: 0 0 28px;
       font-size: 16px;
+      color: var(--ink-soft);
+      max-width: 56ch;
+    }
+
+    /* hero key numbers */
+    .hero-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 28px 0;
+      padding: 24px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .hero-num {
+      text-align: center;
+      padding: 4px;
+    }
+
+    .hero-num + .hero-num {
+      border-left: 1px solid var(--line-soft);
+    }
+
+    .hero-num-value {
+      font-size: clamp(28px, 4.5vw, 40px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-num-value small {
+      font-size: 50%;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .hero-num-label {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .hero-num-note {
+      margin-top: 4px;
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* hero cta */
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cta-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 60px;
+      padding: 16px 24px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ff9b3a, #f57c11);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 20px rgba(245, 124, 17, 0.32);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(245, 124, 17, 0.4);
+    }
+
+    .cta-primary::after {
+      content: "›";
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .cta-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .cta-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cta-meta span::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .hero-campaign {
+      margin-top: 20px;
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #fff7d9, #ffe9a8);
+      border: 1px solid #f1dc7a;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-campaign-icon {
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--highlight);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .hero-campaign-text {
+      flex: 1;
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .hero-campaign-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 2px;
+    }
+
+    /* ============ TRUST BAR ============ */
+    .trust-bar {
+      padding: 28px 0;
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .trust-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .trust-bar-item-icon {
+      flex: 0 0 32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    /* ============ SECTIONS ============ */
+    section {
+      padding: 64px 0;
+    }
+
+    .section-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+
+    h2 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .section-lead {
+      margin: 0 0 36px;
+      max-width: 64ch;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+
+    /* ============ STRENGTHS ============ */
+    .strengths {
+      background: var(--white);
+    }
+
+    .strengths-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .strength {
+      padding: 28px 24px;
+      border-radius: var(--radius);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .strength:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .strength-num {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+    }
+
+    .strength h3 {
+      margin: 0 0 10px;
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+
+    .strength p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ============ INDUSTRY ============ */
+    .industry {
+      background: var(--paper);
+    }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .industry-card {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 16px;
+      padding: 22px;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 1px solid var(--line);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .industry-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .industry-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+    }
+
+    .industry-body h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .industry-body ul {
+      margin: 0 0 12px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 4px;
+    }
+
+    .industry-body li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .industry-body li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .industry-mini-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 800;
+      transition: background 0.2s;
+    }
+
+    .industry-mini-cta:hover {
+      background: var(--accent-dark);
+    }
+
+    .industry-mini-cta::after {
+      content: "›";
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* ============ MID CTA ============ */
+    .mid-cta {
+      padding: 56px 0;
+      background: linear-gradient(135deg, var(--ink), var(--accent-dark));
+      color: var(--white);
+    }
+
+    .mid-cta .wrap {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .mid-cta h2 {
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .mid-cta p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 15px;
+    }
+
+    /* ============ PRICING ============ */
+    .pricing {
+      background: var(--white);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .pricing-card {
+      position: relative;
+      padding: 32px 28px;
+      border-radius: var(--radius);
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .pricing-card.is-featured {
+      background: linear-gradient(180deg, var(--white), var(--highlight-soft));
+      border: 2px solid var(--highlight);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -10px;
+      left: 24px;
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: var(--ink);
+      color: var(--highlight);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+    }
+
+    .pricing-label {
+      margin: 0 0 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pricing-value {
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .pricing-unit {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .pricing-card p {
+      margin: 12px 0 0;
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .pricing-disclaimer {
+      margin-top: 24px;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      background: #fff8e1;
+      border: 1px solid #f0dca6;
+      color: #6d5d22;
+      font-size: 12.5px;
+      line-height: 1.65;
+    }
+
+    /* ============ EXPERIENCE ============ */
+    .experience {
+      background: var(--paper);
+    }
+
+    .experience-card {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 36px;
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .experience-quote {
+      margin: 0 0 20px;
+      padding-left: 24px;
+      border-left: 4px solid var(--highlight);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .experience-body {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      line-height: 1.85;
+    }
+
+    .experience-body p {
+      margin: 0 0 14px;
+    }
+
+    .experience-disclaimer {
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    /* ============ OFFICIAL BANNER ============ */
+    .official-banner {
+      padding: 48px 0;
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .official-banner .wrap {
+      text-align: center;
+    }
+
+    .official-banner-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 4px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .official-banner-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .official-banner-item {
+      display: inline-block;
+      line-height: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .official-banner-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .official-banner-note {
+      margin: 18px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ============ CHECK STEPS ============ */
+    .check-steps {
+      background: var(--white);
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .check-step {
+      position: relative;
+      padding: 24px 22px;
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .check-step-num {
+      position: absolute;
+      right: 14px;
+      top: 12px;
+      font-size: 64px;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.08);
+      line-height: 1;
+    }
+
+    .check-step h3 {
+      position: relative;
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .check-step p {
+      position: relative;
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.65;
+    }
+
+    /* ============ COMPARISON ============ */
+    .comparison {
+      background: var(--paper);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line);
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 16px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .comparison-table thead th {
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .comparison-table tbody th {
+      background: var(--paper);
+      color: var(--ink);
+      font-weight: 800;
+      width: 28%;
+    }
+
+    .comparison-table tbody tr:last-child th,
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table .yes {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .comparison-table .feature-detail {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--muted);
       font-weight: 600;
+    }
+
+    .comparison-note {
+      margin-top: 14px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    /* ============ FAQ ============ */
+    .faq-section {
+      background: var(--white);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      padding: 20px 24px;
+      border-radius: var(--radius);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      transition: border-color 0.2s;
+    }
+
+    details[open] {
+      background: var(--white);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    summary {
       cursor: pointer;
       list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--ink);
     }
-    .faq-item summary::after {
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
       content: "+";
-      font-size: 22px;
-      color: var(--color-text-light);
+      flex: 0 0 28px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 900;
+      transition: transform 0.2s;
     }
-    .faq-item[open] summary::after {
+
+    details[open] summary::after {
       content: "−";
     }
-    .faq-item p {
-      margin-top: 12px;
-      font-size: 15px;
-      color: var(--color-text-light);
-      line-height: 1.7;
+
+    details p {
+      margin: 14px 0 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.75;
     }
 
-    /* FINAL CTA */
+    /* ============ FINAL CTA ============ */
     .final-cta {
-      text-align: center;
-      background: var(--color-surface);
-      padding: 80px 24px;
+      padding: 80px 0;
+      background: linear-gradient(180deg, var(--white) 0%, var(--accent-soft) 100%);
     }
-    .final-cta h2 {
-      font-size: 32px;
-      font-weight: 700;
+
+    .final-cta-card {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      border: 2px solid var(--line);
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .final-cta-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--highlight);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
       margin-bottom: 16px;
     }
-    .final-cta p {
-      font-size: 17px;
-      color: var(--color-text-light);
-      margin-bottom: 32px;
-      max-width: 540px;
-      margin-left: auto;
-      margin-right: auto;
+
+    .final-cta-card h2 {
+      margin-bottom: 12px;
+      font-size: clamp(22px, 3vw, 32px);
+    }
+
+    .final-cta-card p {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.75;
+    }
+
+    .final-cta-card .cta-primary {
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .final-cta-disclaimer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      padding: 36px 0 28px;
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12.5px;
       line-height: 1.7;
     }
 
-    /* FOOTER */
-    .page-footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 13px;
-      color: #666;
-      border-top: 1px solid var(--color-border);
+    footer a {
+      color: var(--white);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
-    .page-footer a { color: #155DFC; }
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-      .hero { padding: 60px 20px 48px; }
-      .hero h1 { font-size: 26px; }
-      .hero .subtitle { font-size: 16px; }
-      .feature-grid { grid-template-columns: 1fr; gap: 16px; }
-      .cta { width: 100%; text-align: center; padding: 18px 24px; }
-      .trust-bar { gap: 16px; }
-      .price-highlight { font-size: 40px; }
+    footer a:hover {
+      border-bottom-color: var(--white);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .hero { padding: 40px 0 32px; }
+      .hero-numbers {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .hero-num + .hero-num {
+        border-left: none;
+        border-top: 1px solid var(--line-soft);
+        padding-top: 16px;
+        margin-top: 8px;
+      }
+      .trust-bar-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .strengths-grid,
+      .industry-grid,
+      .pricing-grid,
+      .check-grid,
+      .mid-cta .wrap {
+        grid-template-columns: 1fr;
+      }
       section { padding: 48px 0; }
-      .pain h2, .features h2, .audience h2, .faq h2 { font-size: 24px; }
-      .final-cta h2 { font-size: 26px; }
+      .experience-card { padding: 28px 22px; }
+      .final-cta-card { padding: 32px 24px; }
+    }
+
+    @media (max-width: 560px) {
+      .header-cta { padding: 8px 12px; font-size: 12px; }
+      .brand { font-size: 13px; }
+      .brand span { font-size: 9px; }
+      .industry-card { grid-template-columns: 44px 1fr; gap: 12px; padding: 18px; }
+      .industry-icon { width: 44px; height: 44px; font-size: 22px; }
+      .comparison-table th, .comparison-table td { padding: 12px 10px; font-size: 13px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 広告開示 -->
-  <div class="container" style="padding-top: 24px;">
-    <div class="disclosure">
-      【広告】本ページはアフィリエイトプログラムによる収益を得ています。掲載情報は2026年4月時点で確認した内容をもとに作成しています。最新の料金・条件・審査・キャンペーン適用可否は必ず公式サイトまたは問い合わせ窓口でご確認ください。
+  <!-- ============ PR BAR ============ -->
+  <div class="pr-bar">
+    <div class="wrap">
+      <strong>PR：</strong>当サイトはアフィリエイト広告を利用しています。株式会社スマレジの公式サイトではありません。料金・キャンペーン・審査条件は変更される場合があるため、申込前に公式情報をご確認ください。
     </div>
   </div>
 
-  <!-- HERO -->
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">
+        PAYGATE 導入前ガイド
+        <span>非公式・店舗向け情報サイト</span>
+      </div>
+      <a href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HVNAR" target="_blank" rel="nofollow sponsored noopener" class="header-cta" data-cta="header_consult">無料で相談する</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="container">
-      <h1>レジ選びで<span class="accent">失敗したくない</span>なら<br>まず知っておきたいこと</h1>
-      <p class="subtitle">比較サイトを何件も見て、結局どれがいいかわからない。そんな方に、レジ導入経験者の視点で「スマレジ」をわかりやすく解説します。</p>
-      <a href="#" class="cta" target="_blank" rel="noopener">スマレジについて問い合わせる</a>
-      <span class="cta-note">問い合わせ自体は無料です</span>
+    <div class="wrap">
+      <span class="hero-target">飲食店・小売・移動販売・訪問サービスの方へ</span>
+      <h1>カード／タッチ／QRを<em>1台に集約</em>。<br>会計時間と取りこぼしを、同時に減らす。</h1>
+      <p class="hero-lead">
+        マルチ決済端末PAYGATEは、約30種類の決済を1台でカバー。
+        飲食店・小売・キッチンカー・訪問サービス・個人タクシーなど、対面決済のある事業者向けに、業界最低基準の手数料と初期費用0円キャンペーンを案内中です。
+      </p>
+
+      <!-- Key 3 numbers -->
+      <div class="hero-numbers">
+        <div class="hero-num">
+          <div class="hero-num-value">1.98<small>%〜</small></div>
+          <div class="hero-num-label">クレジット決済手数料</div>
+          <div class="hero-num-note">中小事業者向け条件適用時</div>
+        </div>
+        <div class="hero-num">
+          <div class="hero-num-value">0<small>円</small></div>
+          <div class="hero-num-label">初期費用・端末代</div>
+          <div class="hero-num-note">キャンペーン適用時</div>
+        </div>
+        <div class="hero-num">
+          <div class="hero-num-value">30<small>+</small></div>
+          <div class="hero-num-label">対応決済の種類</div>
+          <div class="hero-num-note">カード／電子マネー／QR</div>
+        </div>
+      </div>
+
+      <!-- Hero CTA -->
+      <div class="hero-cta-wrap">
+        <a class="cta-primary" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HVNAR" target="_blank" rel="nofollow sponsored noopener" data-cta="hero_consult">
+          自店の手数料・条件を無料で確認する
+        </a>
+        <div class="cta-meta">
+          <span>無料相談</span>
+          <span>申込はヒアリング後</span>
+          <span>法人・個人事業主OK</span>
+        </div>
+      </div>
+
+      <!-- Campaign callout -->
+      <div class="hero-campaign">
+        <div class="hero-campaign-icon">!</div>
+        <div class="hero-campaign-text">
+          <strong>初期費用・端末代0円キャンペーン実施中</strong>
+          適用には条件があります。詳細は問い合わせ時にご確認ください。
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- TRUST BAR -->
+  <!-- ============ TRUST BAR ============ -->
   <div class="trust-bar">
-      <div class="trust-item">
-        アクティブ店舗数 <span class="num">54,000突破</span><small style="font-size:13px; margin-left:4px;">※2025年10月時点・公式発表</small>
+    <div class="wrap">
+      <div class="trust-bar-grid">
+        <div class="trust-bar-item">
+          <div class="trust-bar-item-icon">企</div>
+          <div>株式会社スマレジが提供<br><small style="color:var(--muted-2)">東証グロース上場企業</small></div>
+        </div>
+        <div class="trust-bar-item">
+          <div class="trust-bar-item-icon">連</div>
+          <div>POSレジとの連携で<br>会計→決済が1フロー</div>
+        </div>
+        <div class="trust-bar-item">
+          <div class="trust-bar-item-icon">4G</div>
+          <div>4G通信内蔵で<br>屋外・移動販売もOK</div>
+        </div>
+        <div class="trust-bar-item">
+          <div class="trust-bar-item-icon">印</div>
+          <div>レシートプリンタ内蔵で<br>周辺機器の準備不要</div>
+        </div>
       </div>
-    <div class="trust-item">
-      2013年度 グッドデザイン賞受賞
     </div>
   </div>
 
-  <!-- PAIN POINTS -->
-  <section class="pain">
-    <div class="container">
-      <h2>こんなレジの悩み、ありませんか？</h2>
-      <ul class="pain-list">
-        <li>レジと決済端末が連動しない。金額を二重入力して、打ち間違いが起きる</li>
-        <li>売上の集計を手作業でやっていて、レジと端末の数字が合わないことがある</li>
-        <li>外国人のお客さんに「タッチ決済できますか？」と聞かれて対応できない</li>
-        <li>QR・電子マネー・クレカ、どこまで対応すればいいのか判断がつかない</li>
-        <li>レジの入れ替えにいくらかかるのか見当がつかない</li>
-        <li>比較サイトを見ても情報が多すぎて決められない</li>
-      </ul>
-    </div>
-  </section>
+  <main>
 
-  <!-- FEATURES -->
-  <section class="features">
-    <div class="container">
-      <h2>スマレジの主な特徴</h2>
-      <p class="section-sub">POSレジと決済端末をまとめて検討できます。</p>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">&#x00A5;0</div>
-          <h3>0円のスタンダードプランあり</h3>
-          <p>1店舗・基本レジ機能のみなら月額無料のスタンダードプランがあります。必要に応じて有料プランを検討する使い方も可能です。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#x1F4CA;</div>
-          <h3>売上状況を把握しやすい</h3>
-          <p>日別・時間帯別・商品別の売上データをクラウド上で確認できます。集計作業の負担軽減につながります。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#x1F4B3;</div>
-          <h3>対応する決済端末と連携可能</h3>
-          <p>対応する決済端末と連携することで、レジ入力金額を端末へ反映できます。二重入力の手間を減らし、入力ミスの軽減につながります。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#x1F30F;</div>
-          <h3>クレカのタッチ決済に対応可能</h3>
-          <p>クレジットカードのタッチ決済に対応可能なため、現金以外の支払い手段を広げたい店舗の検討候補になります。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#x1F4F1;</div>
-          <h3>主要なキャッシュレス決済に対応</h3>
-          <p>クレジットカード、QRコード決済、電子マネーなど主要な決済方式をカバー。対応ブランドの詳細は公式サイトで確認できます。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#x1F4F6;</div>
-          <h3>4G回線内蔵の決済端末</h3>
-          <p>PAYGATE端末は4G回線を内蔵。ただしスマレジ連携時はWi-Fi接続が必要で、4Gでの決済はPAYGATE単独利用時に限られます。詳細は要問い合わせ。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#x1F4DE;</div>
-          <h3>サポート体制あり</h3>
-          <p>ヘルプサイトは24時間365日利用可能。サポートセンターへの問い合わせも用意されています。対応時間帯の詳細は公式サイトをご確認ください。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#x1F3E5;</div>
-          <h3>幅広い業種で検討しやすい</h3>
-          <p>飲食店・小売・美容室・クリニックなど、業種別の案内ページや機能情報が用意されています。詳細は公式資料をご確認ください。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MID CTA -->
-  <section style="text-align: center; padding: 48px 24px; background: #fff;">
-    <a href="#" class="cta" target="_blank" rel="noopener">スマレジについて問い合わせる</a>
-    <span class="cta-note">問い合わせ自体は無料です · 導入費用や機能の確認に使えます</span>
-  </section>
-
-  <!-- PRICING -->
-  <section class="pricing">
-    <div class="container">
-      <h2>料金プラン</h2>
-      <div class="price-highlight">¥0〜</div>
-      <p class="price-note">POSレジ スタンダードプラン：1店舗・基本レジ機能は月額無料<br><span style="font-size: 14px;">※上記は スタンダードプラン（1店舗・基本機能のみ）の場合です</span></p>
-      <p class="price-detail">有料プランは月額¥5,500〜。決済端末PAYGATEは中小事業者向け条件付きで決済手数料1.98%〜（対象外業種あり・条件変更の可能性あり）。端末代・月額費用・適用手数料・導入可否はプランや申込内容により異なります。詳細は公式サイトまたは問い合わせで確認してください。</p>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="experience">
-    <div class="experience-card">
-      <h2>テナント店舗でレジと決済端末を使っていた経験から</h2>
-      <p>
-        ※以下はスマレジ・PAYGATEの使用体験ではなく、テナント店舗で従来型レジと決済端末を運用していた経験に基づく個人的な所感です。
-      </p>
-      <p style="margin-top: 16px;">
-        私はテナントの店舗運営に関わっていました。当時はレジと決済端末が別々で連動しておらず、レジに金額を入力してから決済端末にも同じ金額を手入力する毎日。当然、打ち間違いは起きます。売上をオーナーに報告するとき、レジの数字と端末の数字が合わない――そのたびに原因を探す時間が無駄でした。
-      </p>
-        <p style="margin-top: 16px;">
-          私のいた現場では、外国人のお客さんからクレジットカードのタッチ決済に対応しているか聞かれることが多く、日本人のお客さんでもQR決済やタッチ決済を使う場面が増えていると感じていました。店舗によって利用傾向は異なるものの、複数のキャッシュレス決済に対応できる環境の重要性を実感していました。
+    <!-- ============ STRENGTHS ============ -->
+    <section class="strengths">
+      <div class="wrap">
+        <span class="section-tag">3 STRENGTHS</span>
+        <h2>PAYGATEが選ばれる<em>3つの理由</em></h2>
+        <p class="section-lead">
+          決済端末は「支払えればよい機械」ではなく、レジ前の待ち時間、入力ミス、外国人客の使いやすさまで左右する道具です。PAYGATEは、その3つのポイントを1台でカバーします。
         </p>
-      <p style="margin-top: 16px;">
-        もう一つ、ネットワーク障害も本当につらかった。回線が落ちると決済端末が使えなくなり、現金対応に切り替えるしかない。混雑時にこれが起きるとお客さんを待たせることになります。レジと決済が連動し、回線の冗長性もあるシステムなら、こうした現場の苦労は減らせるはずです。
-      </p>
-      <p style="margin-top: 16px;">
-        レジと決済端末の連動や回線対策がどこまで可能かは、導入環境によって異なります。まずは問い合わせで自分の店舗に合うか確認するのが確実です。
-      </p>
-      <p class="author">— 当サイト運営者（テナント店舗での決済端末・レジ運用経験あり。スマレジ・PAYGATEの使用経験はありません）</p>
-    </div>
-  </section>
 
-  <!-- AUDIENCE -->
-  <section class="audience">
-    <div class="container">
-      <h2>こんな方におすすめ</h2>
-      <ul class="audience-list">
-        <li>これから飲食店・カフェ・小売店を開業する方</li>
-        <li>古いレジスターからの入れ替えを検討している店舗オーナー</li>
-        <li>レジと決済端末の二重入力・売上ズレに困っている方</li>
-        <li>インバウンド客のタッチ決済に対応したい方</li>
-        <li>キャッシュレス決済を導入したいが何から始めればいいかわからない方</li>
-        <li>無料プランの有無を確認しながら比較検討したい方</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq">
-    <div class="container">
-      <h2>よくある質問</h2>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>本当に0円で使えますか？</summary>
-          <p>はい。スタンダードプランは1店舗・基本的なレジ機能に限り月額無料です。まず無料で始めて、必要に応じて有料プランに切り替える使い方ができます。</p>
-        </details>
-        <details class="faq-item">
-          <summary>導入に専門知識は必要ですか？</summary>
-          <p>iPadにアプリを導入して使い始める案内がありますが、必要な設定や機器は利用環境によって異なります。不安がある場合は公式の導入案内やサポート情報を確認すると安心です。</p>
-        </details>
-        <details class="faq-item">
-          <summary>Airレジやスクエアとの違いは？</summary>
-          <p>各社それぞれ特徴が異なります。スマレジは公式サイト上で、売上分析・在庫管理・外部連携などの機能を案内しています。どのサービスが合うかは店舗の規模や業種によるため、複数社の資料を比較されることをおすすめします。</p>
-        </details>
-        <details class="faq-item">
-          <summary>問い合わせ後に連絡はありますか？</summary>
-          <p>問い合わせ内容に応じて、担当者からヒアリングの連絡が入る場合があります。連絡方法や時期は状況により異なるため、詳細は公式案内をご確認ください。</p>
-        </details>
-        <details class="faq-item">
-          <summary>今使っているレジからの移行は大変ですか？</summary>
-          <p>商品データはCSVで取り込める案内がありますが、移行作業の内容は現在のレジ環境やデータ形式によって異なります。事前に公式の導入案内や問い合わせで確認するのが安心です。</p>
-        </details>
-        <details class="faq-item">
-          <summary>レジと決済端末は連動できますか？</summary>
-          <p>スマレジはPAYGATE等の決済端末と連携可能です。レジで入力した金額を端末へ反映できるため、二重入力の手間の軽減につながります。対応端末の詳細は資料に記載されています。</p>
-        </details>
+        <div class="strengths-grid">
+          <article class="strength">
+            <span class="strength-num">STRENGTH 01</span>
+            <h3>30種類以上の決済に1台で対応</h3>
+            <p>クレジットカード、タッチ決済、電子マネー、QRコード決済など。お客様の希望に「使えません」と言わなくて済みます。対応する決済ブランドの詳細は申込前にご確認ください。</p>
+          </article>
+          <article class="strength">
+            <span class="strength-num">STRENGTH 02</span>
+            <h3>レジ前を1台ですっきり</h3>
+            <p>レシートプリンタを内蔵しているため、別の機器を用意する必要がありません。スマホのようなタッチパネル操作で、スタッフ教育のコストも抑えられます。</p>
+          </article>
+          <article class="strength">
+            <span class="strength-num">STRENGTH 03</span>
+            <h3>4G通信で屋外・移動販売もOK</h3>
+            <p>4G回線が内蔵されており、Wi-Fiが届かない場所でも稼働できます。キッチンカー、イベント出店、訪問サービス、個人タクシーなど、移動を伴う業態でも安心です。</p>
+          </article>
+        </div>
       </div>
+    </section>
+
+    <!-- ============ INDUSTRY ============ -->
+    <section class="industry" id="industry">
+      <div class="wrap">
+        <span class="section-tag">USE CASES</span>
+        <h2>業種別の<em>使いどころ</em></h2>
+        <p class="section-lead">
+          PAYGATEは「対面決済がある事業者」向けの選択肢です。業種ごとの特徴と相性を整理しました。当てはまる業種から、自店に合うかご確認ください。
+        </p>
+
+        <div class="industry-grid">
+          <article class="industry-card">
+            <div class="industry-icon">🍽</div>
+            <div class="industry-body">
+              <h3>飲食店・カフェ</h3>
+              <ul>
+                <li>テーブル決済対応で混雑時の会計を短縮</li>
+                <li>QR・カード両対応で取りこぼし防止</li>
+                <li>外国人観光客のタッチ決済需要に対応</li>
+              </ul>
+              <a class="industry-mini-cta" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HVNAR" target="_blank" rel="nofollow sponsored noopener" data-cta="industry_food">飲食店向けの条件を確認</a>
+            </div>
+          </article>
+
+          <article class="industry-card">
+            <div class="industry-icon">🛍</div>
+            <div class="industry-body">
+              <h3>小売・アパレル</h3>
+              <ul>
+                <li>レジ前を1台に集約し省スペース化</li>
+                <li>多様な決済手段で会計時の取りこぼしを減らせます</li>
+                <li>POSレジ連携で売上管理も効率化</li>
+              </ul>
+              <a class="industry-mini-cta" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HVNAR" target="_blank" rel="nofollow sponsored noopener" data-cta="industry_retail">小売向けの条件を確認</a>
+            </div>
+          </article>
+
+          <article class="industry-card">
+            <div class="industry-icon">🚚</div>
+            <div class="industry-body">
+              <h3>キッチンカー・移動販売</h3>
+              <ul>
+                <li>4G通信内蔵でWi-Fi不要</li>
+                <li>持ち運び可能で屋外イベントもOK</li>
+                <li>プリンタ内蔵で1台完結</li>
+              </ul>
+              <a class="industry-mini-cta" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HVNAR" target="_blank" rel="nofollow sponsored noopener" data-cta="industry_mobile">移動販売向けの条件を確認</a>
+            </div>
+          </article>
+
+          <article class="industry-card">
+            <div class="industry-icon">💆</div>
+            <div class="industry-body">
+              <h3>訪問サービス（マッサージ・整体等）</h3>
+              <ul>
+                <li>訪問先での即時決済が可能</li>
+                <li>現金管理の手間を削減</li>
+                <li>領収書もその場で発行</li>
+              </ul>
+              <a class="industry-mini-cta" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HVNAR" target="_blank" rel="nofollow sponsored noopener" data-cta="industry_visit">訪問サービス向けの条件を確認</a>
+            </div>
+          </article>
+
+          <article class="industry-card">
+            <div class="industry-icon">🚖</div>
+            <div class="industry-body">
+              <h3>個人タクシー</h3>
+              <ul>
+                <li>4G通信で乗車中の即時決済が可能</li>
+                <li>タッチ決済で会計時間を短縮</li>
+                <li>領収書はプリンタ内蔵で即発行</li>
+              </ul>
+              <a class="industry-mini-cta" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HVNAR" target="_blank" rel="nofollow sponsored noopener" data-cta="industry_taxi">タクシー向けの条件を確認</a>
+            </div>
+          </article>
+
+          <article class="industry-card">
+            <div class="industry-icon">🏥</div>
+            <div class="industry-body">
+              <h3>クリニック・サロン</h3>
+              <ul>
+                <li>受付の会計時間を短縮</li>
+                <li>多様な支払い方法に対応しやすくなります</li>
+                <li>レジ業務の標準化が容易</li>
+              </ul>
+              <a class="industry-mini-cta" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HVNAR" target="_blank" rel="nofollow sponsored noopener" data-cta="industry_clinic">クリニック向けの条件を確認</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MID CTA ============ -->
+    <section class="mid-cta">
+      <div class="wrap">
+        <div>
+          <h2>自店の業種・店舗状況に合うか、<br>無料相談で確認できます</h2>
+          <p>料率・端末代・キャンペーン適用条件は、業種や店舗規模で変わります。問い合わせ後のヒアリングで、自店の条件をご確認ください。</p>
+        </div>
+        <div>
+          <a class="cta-primary" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HVNAR" target="_blank" rel="nofollow sponsored noopener" data-cta="mid_consult">
+            無料相談ページへ
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="pricing">
+      <div class="wrap">
+        <span class="section-tag">PRICING</span>
+        <h2>料金は、<em>手数料だけ</em>で判断しない。</h2>
+        <p class="section-lead">
+          決済端末選びで重要なのは、月額費用・端末代・決済手数料・キャンペーン適用条件・審査条件をまとめて確認すること。表の数字より、自店の条件を確認することが先です。
+        </p>
+
+        <div class="pricing-grid">
+          <div class="pricing-card is-featured">
+            <span class="pricing-badge">業界最低基準</span>
+            <p class="pricing-label">クレジット決済手数料</p>
+            <div class="pricing-value">1.98%<span class="pricing-unit"> 〜</span></div>
+            <p>中小事業者向けに案内されている手数料です。対象業種・事業規模・既存契約の有無などで適用条件が変わるため、問い合わせで自店の条件をご確認ください。</p>
+          </div>
+          <div class="pricing-card">
+            <p class="pricing-label">初期費用・端末代</p>
+            <div class="pricing-value">0円<span class="pricing-unit"> 案内あり</span></div>
+            <p>初期費用・端末代0円キャンペーンの案内があります。時期や申込内容により条件が変わる可能性があるため、最新条件は公式情報でご確認ください。</p>
+          </div>
+        </div>
+
+        <div class="pricing-disclaimer">
+          <strong>料金表示について：</strong>
+          記載の数字は2026年4月時点で公式案内されている内容です。料率・キャンペーン・審査条件は変更される場合があり、適用には条件があります。最終的な料金・条件は、申込前に必ず問い合わせで確認してください。
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="experience" id="experience">
+      <div class="wrap">
+        <span class="section-tag">REAL VOICE</span>
+        <h2>運営者の<em>店舗運営経験から</em></h2>
+
+        <div class="experience-card">
+          <p class="experience-quote">
+            決済端末は「支払えればいい機械」ではなく、レジ前の待ち時間、スタッフの入力ミス、海外客の使いやすさまで左右する道具です。
+          </p>
+          <div class="experience-body">
+            <p>以前、テナント店舗の運営に関わっていた時期があります。当時はレジと決済端末が連動しておらず、レジに入力した金額を決済端末にも手入力する運用でした。混雑時ほど打ち間違いが起きやすく、あとから売上数字が合わない原因を探す時間も発生していました。</p>
+            <p>さらに、外国人のお客様から「タッチ決済は使えますか？」と聞かれる場面が増えました。国や地域によりますが、海外ではクレジットカードのタッチ決済が日常的に使われている場面が多く、対応できないとその需要を見込めない、少なくとも会計体験で不利になると感じました。</p>
+            <p>レジ・決済端末・周辺機器の機能が分散していると、スタッフの負担も会計時間も増えていきます。1台に集約できる選択肢は、現場の運用を考えると有力な候補になり得ます。</p>
+          </div>
+          <div class="experience-disclaimer">
+            ※ これはPAYGATE自体の使用体験ではなく、従来型レジ・決済端末を使っていた店舗運営経験に基づく所感です。実際の使い勝手・導入可否は、店舗環境・契約条件・通信環境により異なります。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OFFICIAL BANNER ============ -->
+    <section class="official-banner" aria-label="公式バナー">
+      <div class="wrap">
+        <span class="official-banner-label">Official Banner</span>
+        <div class="official-banner-grid">
+          <a class="official-banner-item" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HWI5T" target="_blank" rel="nofollow sponsored noopener" data-cta="banner_300x250">
+            <img border="0" width="300" height="250" alt="PAYGATE公式バナー" src="https://www29.a8.net/svt/bgt?aid=260407208294&wid=002&eno=01&mid=s00000023202003007000&mc=1">
+          </a>
+          <img class="a8-pixel" border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B1FHK+4V1HEI+4Z10+HWI5T" alt="">
+        </div>
+        <p class="official-banner-note">広告主が提供する公式バナーです。クリックでPAYGATEの公式案内ページへ移動します。</p>
+      </div>
+    </section>
+
+    <!-- ============ CHECK STEPS ============ -->
+    <section class="check-steps">
+      <div class="wrap">
+        <span class="section-tag">BEFORE APPLY</span>
+        <h2>問い合わせ前に、<em>4つだけ整理</em>。</h2>
+        <p class="section-lead">
+          いきなり申し込むより、店舗の会計導線と必要決済を整理してから相談する方が、プランや端末条件の確認がスムーズです。
+        </p>
+
+        <div class="check-grid">
+          <div class="check-step">
+            <span class="check-step-num">01</span>
+            <h3>必要な決済</h3>
+            <p>カード、タッチ決済、電子マネー、QR決済のうち、自店で必要な決済を整理。</p>
+          </div>
+          <div class="check-step">
+            <span class="check-step-num">02</span>
+            <h3>店舗の業態</h3>
+            <p>飲食、小売、移動販売、訪問など、対面決済の実態を確認。</p>
+          </div>
+          <div class="check-step">
+            <span class="check-step-num">03</span>
+            <h3>通信環境</h3>
+            <p>店内Wi-Fi、4G利用、屋外利用の有無を確認。連携利用時は特に重要。</p>
+          </div>
+          <div class="check-step">
+            <span class="check-step-num">04</span>
+            <h3>費用条件</h3>
+            <p>端末代、月額、手数料、キャンペーン、審査期間をまとめて確認。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMPARISON ============ -->
+    <section class="comparison">
+      <div class="wrap">
+        <span class="section-tag">FEATURE TABLE</span>
+        <h2>機能ベースで見る、<em>決済端末の選び方</em></h2>
+        <p class="section-lead">
+          決済端末選びでよく比較される機能を整理しました。PAYGATEは「対面決済が中心で、決済手段を1台にまとめたい店舗」に向いた構成です。
+        </p>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>機能</th>
+              <th>PAYGATE</th>
+              <th>確認ポイント</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>決済種類</th>
+              <td><span class="yes">30種類以上</span><span class="feature-detail">カード／タッチ／電子マネー／QR</span></td>
+              <td>対応ブランドは申込前にご確認ください</td>
+            </tr>
+            <tr>
+              <th>レシートプリンタ</th>
+              <td><span class="yes">内蔵</span><span class="feature-detail">別機器の準備不要</span></td>
+              <td>用紙交換の頻度・コストは要確認</td>
+            </tr>
+            <tr>
+              <th>通信方式</th>
+              <td><span class="yes">4G通信内蔵</span><span class="feature-detail">屋外利用OK</span></td>
+              <td>連携利用時はWi-Fiが必要な場合あり</td>
+            </tr>
+            <tr>
+              <th>クレジット手数料</th>
+              <td><span class="yes">1.98%〜</span><span class="feature-detail">中小事業者向け条件</span></td>
+              <td>適用業種・事業規模で条件が変わります</td>
+            </tr>
+            <tr>
+              <th>初期費用・端末代</th>
+              <td><span class="yes">0円案内あり</span><span class="feature-detail">キャンペーン適用時</span></td>
+              <td>適用条件は時期により変動</td>
+            </tr>
+            <tr>
+              <th>POSレジ連携</th>
+              <td><span class="yes">対応</span><span class="feature-detail">会計→決済が1フロー</span></td>
+              <td>連携時の通信条件は要確認</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="comparison-note">※ 表中の機能・条件は調査時点の公式情報に基づきます。最新条件は申込前に問い合わせでご確認ください。</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq-section" id="faq">
+      <div class="wrap">
+        <span class="section-tag">FAQ</span>
+        <h2>導入前の<em>よくある質問</em></h2>
+        <p class="section-lead">
+          断定しすぎず、確認が必要な点を明記しています。最終判断は公式情報・問い合わせでご確認ください。
+        </p>
+
+        <div class="faq-list">
+          <details open>
+            <summary>1.98%の手数料は誰でも適用されますか？</summary>
+            <p>いいえ。中小事業者向けの条件を満たす場合に案内される料率です。対象業種・事業規模・既存契約の有無など、適用条件があります。最新の適用条件は問い合わせで確認してください。</p>
+          </details>
+          <details>
+            <summary>初期費用0円キャンペーンの条件は？</summary>
+            <p>キャンペーン内容は時期・申込内容により異なります。料金プランや審査条件と組み合わせて適用される場合があるため、問い合わせ時に最新条件をご確認ください。</p>
+          </details>
+          <details>
+            <summary>申込から導入までの流れを教えてください</summary>
+            <p>WEBから問い合わせ → ヒアリング（氏名・会社名・店舗情報・連絡先などを確認）→ 契約・審査 → 導入、という流れです。問い合わせ時点では確定しません。</p>
+          </details>
+          <details>
+            <summary>POSレジと連携する場合も4G通信で使えますか？</summary>
+            <p>公式案内では、POSレジ連携を行う場合はWi-Fi通信が必要とされています。4G利用は単独利用時や契約プランに関係するため、導入前に通信条件をご確認ください。</p>
+          </details>
+          <details>
+            <summary>個人事業主でも申込できますか？</summary>
+            <p>法人・個人事業主のどちらも対象とされています。ただし、決済サービスを使用しない業種・実態のない申込は対象外です。実店舗・実サービスをお持ちの方が対象です。</p>
+          </details>
+          <details>
+            <summary>他社決済端末からの乗り換えは可能ですか？</summary>
+            <p>乗り換え自体は可能です。ただし、既存契約の解約条件・違約金・端末返却の扱いは現契約先によって異なるため、現契約の確認も並行して進めるのが安心です。</p>
+          </details>
+          <details>
+            <summary>資料ダウンロードではなく問い合わせを案内している理由は？</summary>
+            <p>当ページは、資料ダウンロードではなく、問い合わせフォームでのご相談を主導線にしています。具体的な料率・キャンペーン適用条件は問い合わせ後のヒアリングで個別に案内されるためです。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="final-cta">
+      <div class="wrap">
+        <div class="final-cta-card">
+          <span class="final-cta-badge">NEXT STEP</span>
+          <h2>自店の条件を、<br>まず無料相談で確認</h2>
+          <p>
+            手数料・キャンペーン適用条件・審査条件は、店舗の業種・規模・運営状況によって変わります。<br>
+            申込ではなく、問い合わせとヒアリングで自店の条件を確認できます。
+          </p>
+          <a class="cta-primary" href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HVNAR" target="_blank" rel="nofollow sponsored noopener" data-cta="final_consult">
+            無料相談ページへ進む
+          </a>
+            <p class="final-cta-disclaimer">
+            ※ 問い合わせページへ移動します（資料ダウンロードではありません）。<br>
+            ※ 料金・キャンペーン・適用条件は公式ページでご確認ください。
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="../operator.html">運営者情報</a>
+        <a href="../privacy.html">プライバシーポリシー</a>
+      </div>
+      <p>掲載内容は調査時点の情報です。料金、キャンペーン、審査条件、対応ブランドは変更される場合があります。申込前に必ず公式サイトで最新情報をご確認ください。当サイトは株式会社スマレジの公式サイトではなく、PAYGATEの導入を検討する方向けの非公式情報サイトです。</p>
+      <p style="margin-top:16px;">公式案内ページ：<a href="https://px.a8.net/svt/ejp?a8mat=4B1FHK+4V1HEI+4Z10+HX5B6" target="_blank" rel="nofollow sponsored noopener" data-cta="footer_text">PAYGATE</a></p>
+      <img class="a8-pixel" border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4B1FHK+4V1HEI+4Z10+HX5B6" alt="">
     </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="final-cta">
-    <h2>まずは問い合わせて確認するところから</h2>
-    <p>導入費用・機能・自店舗への適合性など、気になる点をまとめて確認できます。問い合わせ自体は無料です。</p>
-    <a href="#" class="cta" target="_blank" rel="noopener">スマレジについて問い合わせる</a>
-    <span class="cta-note">問い合わせ自体は無料です</span>
-  </section>
-
-  <section style="padding: 24px 24px 40px; background: #fff;">
-    <div class="narrow" style="font-size: 13px; color: var(--color-text-light);">
-      ※当ページは公式情報をもとに要点を整理した紹介ページです。最新の仕様、料金、審査、対象業種、キャンペーン、対応ブランドは変更される場合があります。最終判断の前に必ず公式案内をご確認ください。
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="page-footer">
-    <p style="margin-bottom: 8px;"><a href="../operator.html">運営者情報</a> ｜ <a href="../privacy.html">プライバシーポリシー</a></p>
-    Built with <a href="https://list.affitor.com">Affiliate Skills by Affitor</a>
   </footer>
 
+  <script>
+    // GA4 / Google Ads tracking (optional, fires only if gtag is loaded)
+    document.querySelectorAll("[data-cta]").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (typeof window.gtag !== "function") return;
+        window.gtag("event", "paygate_cta_click", {
+          event_category: "affiliate_lp",
+          event_label: link.dataset.cta
+        });
+      });
+    });
+  </script>
 </body>
 </html>
